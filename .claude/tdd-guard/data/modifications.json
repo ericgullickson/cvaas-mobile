@@ -1,0 +1,11 @@
+{
+  "session_id": "fc5dd12f-d149-47e1-9e14-0a4cf7e671ac",
+  "transcript_path": "/home/egullickson/.claude/projects/-home-egullickson-motovaultpro/fc5dd12f-d149-47e1-9e14-0a4cf7e671ac.jsonl",
+  "hook_event_name": "PreToolUse",
+  "tool_name": "Edit",
+  "tool_input": {
+    "file_path": "/home/egullickson/motovaultpro/mvp-platform-services/landing/src/components/HomePage.tsx",
+    "old_string": "    window.location.href = `http://${tenantId}.motovaultpro.local`",
+    "new_string": "    window.location.href = `https://${tenantId}.motovaultpro.com`"
+  }
+}

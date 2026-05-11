@@ -1,0 +1,1957 @@
+{
+  "basePath": "/cvpservice",
+  "definitions": {
+    "/aaa/AAA": {
+      "$ref": "/web/api/api_json/aaa.json#/definitions/~1aaa~1AAA"
+    },
+    "/aaa/AAADetails": {
+      "$ref": "/web/api/api_json/aaa.json#/definitions/~1aaa~1AAADetails"
+    },
+    "/aaa/AAAServerAndUserForTest": {
+      "$ref": "/web/api/api_json/aaa.json#/definitions/~1aaa~1AAAServerAndUserForTest"
+    },
+    "/aaa/AAAServerSettings": {
+      "$ref": "/web/api/api_json/aaa.json#/definitions/~1aaa~1AAAServerSettings"
+    },
+    "/aaa/AAAServerSettingsForEdit": {
+      "$ref": "/web/api/api_json/aaa.json#/definitions/~1aaa~1AAAServerSettingsForEdit"
+    },
+    "/aaa/AAAUsernames": {
+      "$ref": "/web/api/api_json/aaa.json#/definitions/~1aaa~1AAAUsernames"
+    },
+    "/aaa/Server": {
+      "$ref": "/web/api/api_json/aaa.json#/definitions/~1aaa~1Server"
+    },
+    "/aaa/SuccessResponse": {
+      "$ref": "/web/api/api_json/aaa.json#/definitions/~1aaa~1SuccessResponse"
+    },
+    "/aaa/User": {
+      "$ref": "/web/api/api_json/aaa.json#/definitions/~1aaa~1User"
+    },
+    "/aaa/aaaServers": {
+      "$ref": "/web/api/api_json/aaa.json#/definitions/~1aaa~1aaaServers"
+    },
+    "/aaa/createServerErrorCode": {
+      "$ref": "/web/api/api_json/aaa.json#/definitions/~1aaa~1createServerErrorCode"
+    },
+    "/aaa/deleteServerErrorCode": {
+      "$ref": "/web/api/api_json/aaa.json#/definitions/~1aaa~1deleteServerErrorCode"
+    },
+    "/aaa/editServerErrorCode": {
+      "$ref": "/web/api/api_json/aaa.json#/definitions/~1aaa~1editServerErrorCode"
+    },
+    "/aaa/getAAADetailsByIdErrorCode": {
+      "$ref": "/web/api/api_json/aaa.json#/definitions/~1aaa~1getAAADetailsByIdErrorCode"
+    },
+    "/aaa/getServerByIdErrorCode": {
+      "$ref": "/web/api/api_json/aaa.json#/definitions/~1aaa~1getServerByIdErrorCode"
+    },
+    "/aaa/getServersErrorCode": {
+      "$ref": "/web/api/api_json/aaa.json#/definitions/~1aaa~1getServersErrorCode"
+    },
+    "/aaa/saveAAADetailsErrorCode": {
+      "$ref": "/web/api/api_json/aaa.json#/definitions/~1aaa~1saveAAADetailsErrorCode"
+    },
+    "/aaa/servers": {
+      "$ref": "/web/api/api_json/aaa.json#/definitions/~1aaa~1servers"
+    },
+    "/aaa/testServerConnectivityErrorCode": {
+      "$ref": "/web/api/api_json/aaa.json#/definitions/~1aaa~1testServerConnectivityErrorCode"
+    },
+    "/addTempAction/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1addTempAction~1ErrorCodes"
+    },
+    "/configCompareCount": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1configCompareCount"
+    },
+    "/configlet": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1configlet"
+    },
+    "/configlet/addConfiglet": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1addConfiglet"
+    },
+    "/configlet/addConfigletBuilderErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1addConfigletBuilderErrorCode"
+    },
+    "/configlet/addConfigletErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1addConfigletErrorCode"
+    },
+    "/configlet/addConfigletJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1addConfigletJson"
+    },
+    "/configlet/addConfigletJson1": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1addConfigletJson1"
+    },
+    "/configlet/addConfigletsAndAssociatedMappersErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1addConfigletsAndAssociatedMappersErrorCode"
+    },
+    "/configlet/addConfigletsAndAssociatedMappersItems": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1addConfigletsAndAssociatedMappersItems"
+    },
+    "/configlet/addConfigletsAndAssociatedMappersJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1addConfigletsAndAssociatedMappersJson"
+    },
+    "/configlet/addConfigletsAndAssociatedMappersRequest": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1addConfigletsAndAssociatedMappersRequest"
+    },
+    "/configlet/addConfigletsAndAssociatedMappersRequestItems": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1addConfigletsAndAssociatedMappersRequestItems"
+    },
+    "/configlet/addNoteToConfigletErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1addNoteToConfigletErrorCode"
+    },
+    "/configlet/addNoteToConfigletJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1addNoteToConfigletJson"
+    },
+    "/configlet/addTempConfigletBuilderErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1addTempConfigletBuilderErrorCode"
+    },
+    "/configlet/addTempGeneratedConfiglet": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1addTempGeneratedConfiglet"
+    },
+    "/configlet/addTempGeneratedConfigletErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1addTempGeneratedConfigletErrorCode"
+    },
+    "/configlet/addTempGeneratedConfigletModel": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1addTempGeneratedConfigletModel"
+    },
+    "/configlet/autoConfigletGeneratorErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1autoConfigletGeneratorErrorCode"
+    },
+    "/configlet/autoConfigletGeneratorJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1autoConfigletGeneratorJson"
+    },
+    "/configlet/cancelConfigletBuilderErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1cancelConfigletBuilderErrorCode"
+    },
+    "/configlet/configletBuilderAddArray": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1configletBuilderAddArray"
+    },
+    "/configlet/configletBuilderAddData": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1configletBuilderAddData"
+    },
+    "/configlet/configletBuilderAddDataMainScript": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1configletBuilderAddDataMainScript"
+    },
+    "/configlet/configletBuilderFormArray": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1configletBuilderFormArray"
+    },
+    "/configlet/configletBuilderFormArrayValidation": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1configletBuilderFormArrayValidation"
+    },
+    "/configlet/configletBuilderPreviewArray": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1configletBuilderPreviewArray"
+    },
+    "/configlet/configletBuilderPreviewArrayJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1configletBuilderPreviewArrayJson"
+    },
+    "/configlet/configletBuilderPreviewErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1configletBuilderPreviewErrorCode"
+    },
+    "/configlet/configletBuilderPreviewJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1configletBuilderPreviewJson"
+    },
+    "/configlet/configletBuildermainScriptArray": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1configletBuildermainScriptArray"
+    },
+    "/configlet/configletEventJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1configletEventJson"
+    },
+    "/configlet/configletWithTempConfigletObjectIdMapperJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1configletWithTempConfigletObjectIdMapperJson"
+    },
+    "/configlet/deleteConfigletErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1deleteConfigletErrorCode"
+    },
+    "/configlet/exportConfigletsErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1exportConfigletsErrorCode"
+    },
+    "/configlet/getAppliedContainersArray": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getAppliedContainersArray"
+    },
+    "/configlet/getAppliedContainersErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getAppliedContainersErrorCode"
+    },
+    "/configlet/getAppliedContainersJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getAppliedContainersJson"
+    },
+    "/configlet/getAppliedDeviceCountErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getAppliedDeviceCountErrorCode"
+    },
+    "/configlet/getAppliedDevicesArray": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getAppliedDevicesArray"
+    },
+    "/configlet/getAppliedDevicesCountJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getAppliedDevicesCountJson"
+    },
+    "/configlet/getAppliedDevicesErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getAppliedDevicesErrorCode"
+    },
+    "/configlet/getAppliedDevicesJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getAppliedDevicesJson"
+    },
+    "/configlet/getConfigletBuilderData": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getConfigletBuilderData"
+    },
+    "/configlet/getConfigletBuilderErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getConfigletBuilderErrorCode"
+    },
+    "/configlet/getConfigletBuilderFormListArray": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getConfigletBuilderFormListArray"
+    },
+    "/configlet/getConfigletBuilderFormValidation": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getConfigletBuilderFormValidation"
+    },
+    "/configlet/getConfigletBuilderJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getConfigletBuilderJson"
+    },
+    "/configlet/getConfigletBuilderMainScript": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getConfigletBuilderMainScript"
+    },
+    "/configlet/getConfigletByIdErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getConfigletByIdErrorCode"
+    },
+    "/configlet/getConfigletByIdJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getConfigletByIdJson"
+    },
+    "/configlet/getConfigletByNameErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getConfigletByNameErrorCode"
+    },
+    "/configlet/getConfigletHistoryArray": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getConfigletHistoryArray"
+    },
+    "/configlet/getConfigletHistoryJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getConfigletHistoryJson"
+    },
+    "/configlet/getConfigletHistoryJsonErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getConfigletHistoryJsonErrorCode"
+    },
+    "/configlet/getConfigletMappers": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getConfigletMappers"
+    },
+    "/configlet/getConfigletsAndAssociatedMappersErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getConfigletsAndAssociatedMappersErrorCode"
+    },
+    "/configlet/getConfigletsErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getConfigletsErrorCode"
+    },
+    "/configlet/getConfigletsJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getConfigletsJson"
+    },
+    "/configlet/getCurrentManagementIp": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getCurrentManagementIp"
+    },
+    "/configlet/getCurrentManagementIpErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getCurrentManagementIpErrorCode"
+    },
+    "/configlet/getHierarchicalBuilderCountData": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getHierarchicalBuilderCountData"
+    },
+    "/configlet/getHierarchicalBuilderCountErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getHierarchicalBuilderCountErrorCode"
+    },
+    "/configlet/getHierarchicalBuilderCountJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getHierarchicalBuilderCountJson"
+    },
+    "/configlet/getHierarchicalBuilderJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getHierarchicalBuilderJson"
+    },
+    "/configlet/getHierarchicalBuilderbuildMapperList": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getHierarchicalBuilderbuildMapperList"
+    },
+    "/configlet/getHierarchicalConfigletBuildersErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getHierarchicalConfigletBuildersErrorCode"
+    },
+    "/configlet/getManagementIpArray": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getManagementIpArray"
+    },
+    "/configlet/getManagementIpErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getManagementIpErrorCode"
+    },
+    "/configlet/getManagementIpJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1getManagementIpJson"
+    },
+    "/configlet/importConfigletsErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1importConfigletsErrorCode"
+    },
+    "/configlet/searchConfigletsErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1searchConfigletsErrorCode"
+    },
+    "/configlet/tempConfigletObjectIdMapperJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1tempConfigletObjectIdMapperJson"
+    },
+    "/configlet/updateConfigletBuilderErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1updateConfigletBuilderErrorCode"
+    },
+    "/configlet/updateConfigletErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1updateConfigletErrorCode"
+    },
+    "/configlet/updateConfigletJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1updateConfigletJson"
+    },
+    "/configlet/validateConfigErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1validateConfigErrorCode"
+    },
+    "/configlet/validateConfigHistoryArray": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1validateConfigHistoryArray"
+    },
+    "/configlet/validateConfigHistoryErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1validateConfigHistoryErrorCode"
+    },
+    "/configlet/validateConfigHistoryJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1validateConfigHistoryJson"
+    },
+    "/configlet/validateConfigJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1validateConfigJson"
+    },
+    "/configlet/validateScriptErrorCode": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1validateScriptErrorCode"
+    },
+    "/configlet/validateScriptJson": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/~1configlet~1validateScriptJson"
+    },
+    "/data2Array": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1data2Array"
+    },
+    "/dataSuccess": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1dataSuccess"
+    },
+    "/dataSuccessWithTaskIds": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1dataSuccessWithTaskIds"
+    },
+    "/dataSuccessWithTaskIdsData": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1dataSuccessWithTaskIdsData"
+    },
+    "/deleteAllTempAction/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1deleteAllTempAction~1ErrorCodes"
+    },
+    "/deleteAllTempAction/SuccessResponse": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1deleteAllTempAction~1SuccessResponse"
+    },
+    "/deleteTempAction/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1deleteTempAction~1ErrorCodes"
+    },
+    "/deleteTempAction/SuccessResponse": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1deleteTempAction~1SuccessResponse"
+    },
+    "/deviceStatus": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1deviceStatus"
+    },
+    "/event": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1event"
+    },
+    "/event/cancelEventErrorCode": {
+      "$ref": "/web/api/api_json/event.json#/definitions/~1event~1cancelEventErrorCode"
+    },
+    "/event/eventErrorData": {
+      "$ref": "/web/api/api_json/event.json#/definitions/~1event~1eventErrorData"
+    },
+    "/event/getAllEventsErrorCode": {
+      "$ref": "/web/api/api_json/event.json#/definitions/~1event~1getAllEventsErrorCode"
+    },
+    "/event/getAllEventsSuccessResponse": {
+      "$ref": "/web/api/api_json/event.json#/definitions/~1event~1getAllEventsSuccessResponse"
+    },
+    "/event/getErrorEventsErrorCode": {
+      "$ref": "/web/api/api_json/event.json#/definitions/~1event~1getErrorEventsErrorCode"
+    },
+    "/event/getErrorEventsSuccessResponse": {
+      "$ref": "/web/api/api_json/event.json#/definitions/~1event~1getErrorEventsSuccessResponse"
+    },
+    "/event/getEventByIdErrorCode": {
+      "$ref": "/web/api/api_json/event.json#/definitions/~1event~1getEventByIdErrorCode"
+    },
+    "/event/getEventByIdSuccessResponse": {
+      "$ref": "/web/api/api_json/event.json#/definitions/~1event~1getEventByIdSuccessResponse"
+    },
+    "/event/getEventData": {
+      "$ref": "/web/api/api_json/event.json#/definitions/~1event~1getEventData"
+    },
+    "/event/getEventDataByIdErrorCode": {
+      "$ref": "/web/api/api_json/event.json#/definitions/~1event~1getEventDataByIdErrorCode"
+    },
+    "/event/getEventDataByIdSuccessResponse": {
+      "$ref": "/web/api/api_json/event.json#/definitions/~1event~1getEventDataByIdSuccessResponse"
+    },
+    "/event/getEventInfoErrorCode": {
+      "$ref": "/web/api/api_json/event.json#/definitions/~1event~1getEventInfoErrorCode"
+    },
+    "/event/getEventInfoSuccessResponse": {
+      "$ref": "/web/api/api_json/event.json#/definitions/~1event~1getEventInfoSuccessResponse"
+    },
+    "/event/markAsReadErrorCode": {
+      "$ref": "/web/api/api_json/event.json#/definitions/~1event~1markAsReadErrorCode"
+    },
+    "/event/sucessStringResponse": {
+      "$ref": "/web/api/api_json/event.json#/definitions/~1event~1sucessStringResponse"
+    },
+    "/filterTopology/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1filterTopology~1ErrorCodes"
+    },
+    "/filterTopologyJson": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1filterTopologyJson"
+    },
+    "/getAllTempActions/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getAllTempActions~1ErrorCodes"
+    },
+    "/getAllTempActions/SuccessResponse": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getAllTempActions~1SuccessResponse"
+    },
+    "/getConfigForTaskjson": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getConfigForTaskjson"
+    },
+    "/getConfigForTaskjson/designedConfig": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getConfigForTaskjson~1designedConfig"
+    },
+    "/getConfigletsByContainerId/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getConfigletsByContainerId~1ErrorCodes"
+    },
+    "/getConfigletsByContainerId/SuccessResponse": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getConfigletsByContainerId~1SuccessResponse"
+    },
+    "/getConfigletsByNetElementId/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getConfigletsByNetElementId~1ErrorCodes"
+    },
+    "/getContainerInfoById/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getContainerInfoById~1ErrorCodes"
+    },
+    "/getImageBundleByContainerId/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getImageBundleByContainerId~1ErrorCodes"
+    },
+    "/getImageBundleByNetElementId/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getImageBundleByNetElementId~1ErrorCodes"
+    },
+    "/getImageForTask/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getImageForTask~1ErrorCodes"
+    },
+    "/getLabelsByNetElementId": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getLabelsByNetElementId"
+    },
+    "/getLabelsByNetElementId/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getLabelsByNetElementId~1ErrorCodes"
+    },
+    "/getNetElementImageById/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getNetElementImageById~1ErrorCodes"
+    },
+    "/getNetElementInfoById/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getNetElementInfoById~1ErrorCodes"
+    },
+    "/getNetElementInfoById/SuccessResponse": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getNetElementInfoById~1SuccessResponse"
+    },
+    "/getNetElementList/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getNetElementList~1ErrorCodes"
+    },
+    "/getNetElementList/SuccessResponse": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getNetElementList~1SuccessResponse"
+    },
+    "/getProposedContainerData": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getProposedContainerData"
+    },
+    "/getTempConfigsByContainerId/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getTempConfigsByContainerId~1ErrorCodes"
+    },
+    "/getTempConfigsByNetElementId/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getTempConfigsByNetElementId~1ErrorCodes"
+    },
+    "/getTempLabelsByNetElementId": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getTempLabelsByNetElementId"
+    },
+    "/getTempLabelsByNetElementId/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getTempLabelsByNetElementId~1ErrorCodes"
+    },
+    "/getconfigfortask/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1getconfigfortask~1ErrorCodes"
+    },
+    "/image/addImageErrorCodes": {
+      "$ref": "/web/api/api_json/image.json#/definitions/~1image~1addImageErrorCodes"
+    },
+    "/image/addImageSucessResponseJson": {
+      "$ref": "/web/api/api_json/image.json#/definitions/~1image~1addImageSucessResponseJson"
+    },
+    "/image/addNotesToImageBundleErrorCodes": {
+      "$ref": "/web/api/api_json/image.json#/definitions/~1image~1addNotesToImageBundleErrorCodes"
+    },
+    "/image/cancelImagesErrorCodes": {
+      "$ref": "/web/api/api_json/image.json#/definitions/~1image~1cancelImagesErrorCodes"
+    },
+    "/image/deleteImageBundlesErrorCodes": {
+      "$ref": "/web/api/api_json/image.json#/definitions/~1image~1deleteImageBundlesErrorCodes"
+    },
+    "/image/getAppliedDeviceCountErrorCodes": {
+      "$ref": "/web/api/api_json/image.json#/definitions/~1image~1getAppliedDeviceCountErrorCodes"
+    },
+    "/image/getAppliedDeviceJson": {
+      "$ref": "/web/api/api_json/image.json#/definitions/~1image~1getAppliedDeviceJson"
+    },
+    "/image/getImageBundleAppliedContainersErrorCodes": {
+      "$ref": "/web/api/api_json/image.json#/definitions/~1image~1getImageBundleAppliedContainersErrorCodes"
+    },
+    "/image/getImageBundleAppliedDevicesErrorCodes": {
+      "$ref": "/web/api/api_json/image.json#/definitions/~1image~1getImageBundleAppliedDevicesErrorCodes"
+    },
+    "/image/getImageBundleByNameErrorCodes": {
+      "$ref": "/web/api/api_json/image.json#/definitions/~1image~1getImageBundleByNameErrorCodes"
+    },
+    "/image/getImageBundlesErrorCodes": {
+      "$ref": "/web/api/api_json/image.json#/definitions/~1image~1getImageBundlesErrorCodes"
+    },
+    "/image/getImagesErrorCodes": {
+      "$ref": "/web/api/api_json/image.json#/definitions/~1image~1getImagesErrorCodes"
+    },
+    "/image/saveImageBundleErrorCodes": {
+      "$ref": "/web/api/api_json/image.json#/definitions/~1image~1saveImageBundleErrorCodes"
+    },
+    "/image/updateImageBundleErrorCodes": {
+      "$ref": "/web/api/api_json/image.json#/definitions/~1image~1updateImageBundleErrorCodes"
+    },
+    "/images/getImageBundleAppliedDevicesResponseJson": {
+      "$ref": "/web/api/api_json/image.json#/definitions/~1images~1getImageBundleAppliedDevicesResponseJson"
+    },
+    "/images/getImageBundleByNameResponseJson": {
+      "$ref": "/web/api/api_json/image.json#/definitions/~1images~1getImageBundleByNameResponseJson"
+    },
+    "/images/getImageBundlesResponseJson": {
+      "$ref": "/web/api/api_json/image.json#/definitions/~1images~1getImageBundlesResponseJson"
+    },
+    "/images/getImageResponseJson": {
+      "$ref": "/web/api/api_json/image.json#/definitions/~1images~1getImageResponseJson"
+    },
+    "/images/saveImageBundleResponseJson": {
+      "$ref": "/web/api/api_json/image.json#/definitions/~1images~1saveImageBundleResponseJson"
+    },
+    "/images/v2/getImageBundleByNameResponseJson": {
+      "$ref": "/web/api/api_json/image.json#/definitions/~1images~1v2~1getImageBundleByNameResponseJson"
+    },
+    "/images/v2/getImageBundlesResponseJson": {
+      "$ref": "/web/api/api_json/image.json#/definitions/~1images~1v2~1getImageBundlesResponseJson"
+    },
+    "/ipConnectivityTest/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1ipConnectivityTest~1ErrorCodes"
+    },
+    "/label": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1label"
+    },
+    "/label/addLabelErrorCode": {
+      "$ref": "/web/api/api_json/label.json#/definitions/~1label~1addLabelErrorCode"
+    },
+    "/label/appliedDeviceErrorCode": {
+      "$ref": "/web/api/api_json/label.json#/definitions/~1label~1appliedDeviceErrorCode"
+    },
+    "/label/deleteLabelErrorCode": {
+      "$ref": "/web/api/api_json/label.json#/definitions/~1label~1deleteLabelErrorCode"
+    },
+    "/label/getLabelErrorCode": {
+      "$ref": "/web/api/api_json/label.json#/definitions/~1label~1getLabelErrorCode"
+    },
+    "/label/getLabelInfoErrorCode": {
+      "$ref": "/web/api/api_json/label.json#/definitions/~1label~1getLabelInfoErrorCode"
+    },
+    "/label/updateLabelErrorCode": {
+      "$ref": "/web/api/api_json/label.json#/definitions/~1label~1updateLabelErrorCode"
+    },
+    "/label/updateNoteErrorCode": {
+      "$ref": "/web/api/api_json/label.json#/definitions/~1label~1updateNoteErrorCode"
+    },
+    "/netElement": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1netElement"
+    },
+    "/netelementContainerListjson": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1netelementContainerListjson"
+    },
+    "/provisioning/SuccessResponse": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1provisioning~1SuccessResponse"
+    },
+    "/provisioning/cancelReconcileErrorCode": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1provisioning~1cancelReconcileErrorCode"
+    },
+    "/provisioning/checkComplianceErrorCode": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1provisioning~1checkComplianceErrorCode"
+    },
+    "/provisioning/containerLevelReconcileErrorCode": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1provisioning~1containerLevelReconcileErrorCode"
+    },
+    "/provisioning/getConfigletByIdJson": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1provisioning~1getConfigletByIdJson"
+    },
+    "/provisioning/getConfigletsErrorCode": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1provisioning~1getConfigletsErrorCode"
+    },
+    "/provisioning/getConfigletsJson": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1provisioning~1getConfigletsJson"
+    },
+    "/provisioning/getNetElementByIdErrorCode": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1provisioning~1getNetElementByIdErrorCode"
+    },
+    "/provisioning/getProposedContainer": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1provisioning~1getProposedContainer"
+    },
+    "/provisioning/getProposedContainerErrorCode": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1provisioning~1getProposedContainerErrorCode"
+    },
+    "/provisioning/getTempSessionReconciledConfigErrorCode": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1provisioning~1getTempSessionReconciledConfigErrorCode"
+    },
+    "/provisioning/getTempSessionReconciledConfiglets": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1provisioning~1getTempSessionReconciledConfiglets"
+    },
+    "/provisioning/searchConfigletsErrorCode": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1provisioning~1searchConfigletsErrorCode"
+    },
+    "/provisioning/updateReconcileConfigErrorCode": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1provisioning~1updateReconcileConfigErrorCode"
+    },
+    "/role/UpdateRoleDetails": {
+      "$ref": "/web/api/api_json/role.json#/definitions/~1role~1UpdateRoleDetails"
+    },
+    "/role/createRole": {
+      "$ref": "/web/api/api_json/role.json#/definitions/~1role~1createRole"
+    },
+    "/role/createRole/ErrorCodes": {
+      "$ref": "/web/api/api_json/role.json#/definitions/~1role~1createRole~1ErrorCodes"
+    },
+    "/role/createRole/Response": {
+      "$ref": "/web/api/api_json/role.json#/definitions/~1role~1createRole~1Response"
+    },
+    "/role/deleteRole/ErrorCodes": {
+      "$ref": "/web/api/api_json/role.json#/definitions/~1role~1deleteRole~1ErrorCodes"
+    },
+    "/role/dynamicValue": {
+      "$ref": "/web/api/api_json/role.json#/definitions/~1role~1dynamicValue"
+    },
+    "/role/getAppliedUserCount/ErrorCodes": {
+      "$ref": "/web/api/api_json/role.json#/definitions/~1role~1getAppliedUserCount~1ErrorCodes"
+    },
+    "/role/getAppliedUsers/ErrorCodes": {
+      "$ref": "/web/api/api_json/role.json#/definitions/~1role~1getAppliedUsers~1ErrorCodes"
+    },
+    "/role/getRole/ErrorCodes": {
+      "$ref": "/web/api/api_json/role.json#/definitions/~1role~1getRole~1ErrorCodes"
+    },
+    "/role/getRoleListResponse": {
+      "$ref": "/web/api/api_json/role.json#/definitions/~1role~1getRoleListResponse"
+    },
+    "/role/getRoles/ErrorCodes": {
+      "$ref": "/web/api/api_json/role.json#/definitions/~1role~1getRoles~1ErrorCodes"
+    },
+    "/role/updateRole/ErrorCodes": {
+      "$ref": "/web/api/api_json/role.json#/definitions/~1role~1updateRole~1ErrorCodes"
+    },
+    "/role/userAssignment": {
+      "$ref": "/web/api/api_json/role.json#/definitions/~1role~1userAssignment"
+    },
+    "/rollback/addNetworkRollbackTempActionsJson": {
+      "$ref": "/web/api/api_json/rollback.json#/definitions/~1rollback~1addNetworkRollbackTempActionsJson"
+    },
+    "/rollback/addNetworkRollbackTempActionsResponse": {
+      "$ref": "/web/api/api_json/rollback.json#/definitions/~1rollback~1addNetworkRollbackTempActionsResponse"
+    },
+    "/rollback/addNetworkRollbackTempActionsResponseData": {
+      "$ref": "/web/api/api_json/rollback.json#/definitions/~1rollback~1addNetworkRollbackTempActionsResponseData"
+    },
+    "/rollback/addTempRollbackActionJson": {
+      "$ref": "/web/api/api_json/rollback.json#/definitions/~1rollback~1addTempRollbackActionJson"
+    },
+    "/rollback/addTempRollbackActionsErrorCode": {
+      "$ref": "/web/api/api_json/rollback.json#/definitions/~1rollback~1addTempRollbackActionsErrorCode"
+    },
+    "/rollback/addTempRollbackActionsResponse": {
+      "$ref": "/web/api/api_json/rollback.json#/definitions/~1rollback~1addTempRollbackActionsResponse"
+    },
+    "/rollback/configImageRollbackInput": {
+      "$ref": "/web/api/api_json/rollback.json#/definitions/~1rollback~1configImageRollbackInput"
+    },
+    "/rollback/detailedInfoArray": {
+      "$ref": "/web/api/api_json/rollback.json#/definitions/~1rollback~1detailedInfoArray"
+    },
+    "/rollback/getHierarchyChangeInfoErrorCode": {
+      "$ref": "/web/api/api_json/rollback.json#/definitions/~1rollback~1getHierarchyChangeInfoErrorCode"
+    },
+    "/rollback/getHierarchyChangeInfoResponse": {
+      "$ref": "/web/api/api_json/rollback.json#/definitions/~1rollback~1getHierarchyChangeInfoResponse"
+    },
+    "/rollback/getHierarchyChangeInfoResponsedataJson": {
+      "$ref": "/web/api/api_json/rollback.json#/definitions/~1rollback~1getHierarchyChangeInfoResponsedataJson"
+    },
+    "/rollback/skippedDeviceInfo": {
+      "$ref": "/web/api/api_json/rollback.json#/definitions/~1rollback~1skippedDeviceInfo"
+    },
+    "/rollback/targetManagementIPList": {
+      "$ref": "/web/api/api_json/rollback.json#/definitions/~1rollback~1targetManagementIPList"
+    },
+    "/rollback/taskListDataObj": {
+      "$ref": "/web/api/api_json/rollback.json#/definitions/~1rollback~1taskListDataObj"
+    },
+    "/rollback/taskListObj": {
+      "$ref": "/web/api/api_json/rollback.json#/definitions/~1rollback~1taskListObj"
+    },
+    "/rollback/tempActionListObj": {
+      "$ref": "/web/api/api_json/rollback.json#/definitions/~1rollback~1tempActionListObj"
+    },
+    "/rollback/workOrderDetailsObj": {
+      "$ref": "/web/api/api_json/rollback.json#/definitions/~1rollback~1workOrderDetailsObj"
+    },
+    "/saveTopology/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1saveTopology~1ErrorCodes"
+    },
+    "/searchTopology/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1searchTopology~1ErrorCodes"
+    },
+    "/snapshot/deleteTemplatesErrorCode": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1deleteTemplatesErrorCode"
+    },
+    "/snapshot/deleteTemplatesResponseJson": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1deleteTemplatesResponseJson"
+    },
+    "/snapshot/deviceConfigs/extensionsAndPatches": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1deviceConfigs~1extensionsAndPatches"
+    },
+    "/snapshot/deviceConfigs/imageInfo": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1deviceConfigs~1imageInfo"
+    },
+    "/snapshot/deviceConfigsErrorCode": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1deviceConfigsErrorCode"
+    },
+    "/snapshot/deviceConfigsResponseJson": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1deviceConfigsResponseJson"
+    },
+    "/snapshot/deviceIDArrayJson": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1deviceIDArrayJson"
+    },
+    "/snapshot/getSnapshotChartData": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1getSnapshotChartData"
+    },
+    "/snapshot/getSnapshotChartDataErrorCode": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1getSnapshotChartDataErrorCode"
+    },
+    "/snapshot/hierarchychangeinfoErrorCode": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1hierarchychangeinfoErrorCode"
+    },
+    "/snapshot/hierarchychangeinfoResponseJson": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1hierarchychangeinfoResponseJson"
+    },
+    "/snapshot/snapshotChartJson": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1snapshotChartJson"
+    },
+    "/snapshot/templateErrorCode": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1templateErrorCode"
+    },
+    "/snapshot/templateIDsArrayJson": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1templateIDsArrayJson"
+    },
+    "/snapshot/templateResponseJson": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1templateResponseJson"
+    },
+    "/snapshot/templates/captureErrorCode": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1templates~1captureErrorCode"
+    },
+    "/snapshot/templates/captureJson": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1templates~1captureJson"
+    },
+    "/snapshot/templates/captureResponseJson": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1templates~1captureResponseJson"
+    },
+    "/snapshot/templates/scheduleErrorCode": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1templates~1scheduleErrorCode"
+    },
+    "/snapshot/templates/scheduleJson": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1templates~1scheduleJson"
+    },
+    "/snapshot/templates/scheduleResponseJson": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1templates~1scheduleResponseJson"
+    },
+    "/snapshot/templates/templateKeys": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1templates~1templateKeys"
+    },
+    "/snapshot/templatesErrorCode": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1templatesErrorCode"
+    },
+    "/snapshot/templatesResponseJson": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1templatesResponseJson"
+    },
+    "/snapshot/templatesinfoErrorCode": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1templatesinfoErrorCode"
+    },
+    "/snapshot/templatesinfoResponseJson": {
+      "$ref": "/web/api/api_json/snapshot.json#/definitions/~1snapshot~1templatesinfoResponseJson"
+    },
+    "/task/addNoteToTaskErrorCode": {
+      "$ref": "/web/api/api_json/task.json#/definitions/~1task~1addNoteToTaskErrorCode"
+    },
+    "/task/addWorkOrderLogErrorCode": {
+      "$ref": "/web/api/api_json/task.json#/definitions/~1task~1addWorkOrderLogErrorCode"
+    },
+    "/task/cancelTaskErrorCode": {
+      "$ref": "/web/api/api_json/task.json#/definitions/~1task~1cancelTaskErrorCode"
+    },
+    "/task/executeTaskErrorCode": {
+      "$ref": "/web/api/api_json/task.json#/definitions/~1task~1executeTaskErrorCode"
+    },
+    "/task/exportLogsErrorCode": {
+      "$ref": "/web/api/api_json/task.json#/definitions/~1task~1exportLogsErrorCode"
+    },
+    "/task/getAddNotesToTaskSuccessResponse": {
+      "$ref": "/web/api/api_json/task.json#/definitions/~1task~1getAddNotesToTaskSuccessResponse"
+    },
+    "/task/getAddTaskLogSuccessResponse": {
+      "$ref": "/web/api/api_json/task.json#/definitions/~1task~1getAddTaskLogSuccessResponse"
+    },
+    "/task/getCancelTaskSuccessResponse": {
+      "$ref": "/web/api/api_json/task.json#/definitions/~1task~1getCancelTaskSuccessResponse"
+    },
+    "/task/getExecuteTaskSuccessResponse": {
+      "$ref": "/web/api/api_json/task.json#/definitions/~1task~1getExecuteTaskSuccessResponse"
+    },
+    "/task/getTaskByIdErrorCode": {
+      "$ref": "/web/api/api_json/task.json#/definitions/~1task~1getTaskByIdErrorCode"
+    },
+    "/task/getTaskByIdSuccessResponse": {
+      "$ref": "/web/api/api_json/task.json#/definitions/~1task~1getTaskByIdSuccessResponse"
+    },
+    "/task/getTaskData": {
+      "$ref": "/web/api/api_json/task.json#/definitions/~1task~1getTaskData"
+    },
+    "/task/getTaskStatusByIdErrorCode": {
+      "$ref": "/web/api/api_json/task.json#/definitions/~1task~1getTaskStatusByIdErrorCode"
+    },
+    "/task/getTaskStatusByIdSuccessResponse": {
+      "$ref": "/web/api/api_json/task.json#/definitions/~1task~1getTaskStatusByIdSuccessResponse"
+    },
+    "/task/getTasksArray": {
+      "$ref": "/web/api/api_json/task.json#/definitions/~1task~1getTasksArray"
+    },
+    "/task/getTasksErrorCode": {
+      "$ref": "/web/api/api_json/task.json#/definitions/~1task~1getTasksErrorCode"
+    },
+    "/task/getTasksSuccessResponse": {
+      "$ref": "/web/api/api_json/task.json#/definitions/~1task~1getTasksSuccessResponse"
+    },
+    "/task/getWorkOrderDetails": {
+      "$ref": "/web/api/api_json/task.json#/definitions/~1task~1getWorkOrderDetails"
+    },
+    "/tempAction": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1tempAction"
+    },
+    "/tempActionInput": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1tempActionInput"
+    },
+    "/topology": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1topology"
+    },
+    "/updateNetElementImageById/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1updateNetElementImageById~1ErrorCodes"
+    },
+    "/updateRole/moduleListRequestItems": {
+      "$ref": "/web/api/api_json/role.json#/definitions/~1updateRole~1moduleListRequestItems"
+    },
+    "/updateRole/moduleListResponseItems": {
+      "$ref": "/web/api/api_json/role.json#/definitions/~1updateRole~1moduleListResponseItems"
+    },
+    "/user/UserDetails": {
+      "$ref": "/web/api/api_json/user.json#/definitions/~1user~1UserDetails"
+    },
+    "/user/UserDetails/UserDetails": {
+      "$ref": "/web/api/api_json/user.json#/definitions/~1user~1UserDetails~1UserDetails"
+    },
+    "/user/addUserErrorCode": {
+      "$ref": "/web/api/api_json/user.json#/definitions/~1user~1addUserErrorCode"
+    },
+    "/user/deleteUsersErrorCode": {
+      "$ref": "/web/api/api_json/user.json#/definitions/~1user~1deleteUsersErrorCode"
+    },
+    "/user/dynamicValue": {
+      "$ref": "/web/api/api_json/user.json#/definitions/~1user~1dynamicValue"
+    },
+    "/user/enableDisableUsersErrorCode": {
+      "$ref": "/web/api/api_json/user.json#/definitions/~1user~1enableDisableUsersErrorCode"
+    },
+    "/user/getOnlineUserCount": {
+      "$ref": "/web/api/api_json/user.json#/definitions/~1user~1getOnlineUserCount"
+    },
+    "/user/getOnlineUserCountErrorCode": {
+      "$ref": "/web/api/api_json/user.json#/definitions/~1user~1getOnlineUserCountErrorCode"
+    },
+    "/user/getUserDetails": {
+      "$ref": "/web/api/api_json/user.json#/definitions/~1user~1getUserDetails"
+    },
+    "/user/getUserErrorCode": {
+      "$ref": "/web/api/api_json/user.json#/definitions/~1user~1getUserErrorCode"
+    },
+    "/user/getUsersDetails": {
+      "$ref": "/web/api/api_json/user.json#/definitions/~1user~1getUsersDetails"
+    },
+    "/user/getUsersErrorCode": {
+      "$ref": "/web/api/api_json/user.json#/definitions/~1user~1getUsersErrorCode"
+    },
+    "/user/responseForAddUser": {
+      "$ref": "/web/api/api_json/user.json#/definitions/~1user~1responseForAddUser"
+    },
+    "/user/responseForSuccess": {
+      "$ref": "/web/api/api_json/user.json#/definitions/~1user~1responseForSuccess"
+    },
+    "/user/updateUserErrorCode": {
+      "$ref": "/web/api/api_json/user.json#/definitions/~1user~1updateUserErrorCode"
+    },
+    "/user/user": {
+      "$ref": "/web/api/api_json/user.json#/definitions/~1user~1user"
+    },
+    "/userManagement/getAppliedUserCountResponse": {
+      "$ref": "/web/api/api_json/role.json#/definitions/~1userManagement~1getAppliedUserCountResponse"
+    },
+    "/userManagement/responseForSuccess": {
+      "$ref": "/web/api/api_json/role.json#/definitions/~1userManagement~1responseForSuccess"
+    },
+    "/v2/saveTopology/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1v2~1saveTopology~1ErrorCodes"
+    },
+    "/v2/validateAndCompareConfiglets/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1v2~1validateAndCompareConfiglets~1ErrorCodes"
+    },
+    "/v3/getconfigfortask/ErrorCodes": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1v3~1getconfigfortask~1ErrorCodes"
+    },
+    "/version3getconfigfortask": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1version3getconfigfortask"
+    },
+    "/vesionTwoGetConfigForTaskjson": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1vesionTwoGetConfigForTaskjson"
+    },
+    "/workOrderData": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1workOrderData"
+    },
+    "/workOrderDetails": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1workOrderDetails"
+    },
+    "/workOrderEscalation": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1workOrderEscalation"
+    },
+    "/workOrderJson": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/~1workOrderJson"
+    },
+    "ApiResponse": {
+      "$ref": "/web/api/api_json/packaging.json#/definitions/ApiResponse"
+    },
+    "AuditExportLogsError": {
+      "$ref": "/web/api/api_json/audit.json#/definitions/AuditExportLogsError"
+    },
+    "AuditGetLogsError": {
+      "$ref": "/web/api/api_json/audit.json#/definitions/AuditGetLogsError"
+    },
+    "AuditGetLogsInput": {
+      "$ref": "/web/api/api_json/audit.json#/definitions/AuditGetLogsInput"
+    },
+    "AuditLogs": {
+      "$ref": "/web/api/api_json/audit.json#/definitions/AuditLogs"
+    },
+    "AuditLogsArray": {
+      "$ref": "/web/api/api_json/audit.json#/definitions/AuditLogsArray"
+    },
+    "CVPUserProfile": {
+      "$ref": "/web/api/api_json/login.json#/definitions/CVPUserProfile"
+    },
+    "ChangePasswordModel": {
+      "$ref": "/web/api/api_json/login.json#/definitions/ChangePasswordModel"
+    },
+    "CodeResponse": {
+      "$ref": "/web/api/api_json/packaging.json#/definitions/CodeResponse"
+    },
+    "Container": {
+      "$ref": "/web/api/api_json/inventory.json#/definitions/Container"
+    },
+    "CvpInfo": {
+      "$ref": "/web/api/api_json/cvpInfo.json#/definitions/CvpInfo"
+    },
+    "DeleteDeviceFailed": {
+      "$ref": "/web/api/api_json/inventory.json#/definitions/DeleteDeviceFailed"
+    },
+    "DeleteDevicesReq": {
+      "$ref": "/web/api/api_json/inventory.json#/definitions/DeleteDevicesReq"
+    },
+    "DeleteDevicesResp": {
+      "$ref": "/web/api/api_json/inventory.json#/definitions/DeleteDevicesResp"
+    },
+    "Device": {
+      "$ref": "/web/api/api_json/inventory.json#/definitions/Device"
+    },
+    "DeviceOnboardingFailure": {
+      "$ref": "/web/api/api_json/inventory.json#/definitions/DeviceOnboardingFailure"
+    },
+    "ErrorResponse": {
+      "$ref": "/web/api/api_json/packaging.json#/definitions/ErrorResponse"
+    },
+    "GetCvpInfoError": {
+      "$ref": "/web/api/api_json/cvpInfo.json#/definitions/GetCvpInfoError"
+    },
+    "GetInventoryDeviceConfigurationError": {
+      "$ref": "/web/api/api_json/inventory.json#/definitions/GetInventoryDeviceConfigurationError"
+    },
+    "HostNameDeviceMap": {
+      "$ref": "/web/api/api_json/inventory.json#/definitions/HostNameDeviceMap"
+    },
+    "InventoryDeviceConfiguration": {
+      "$ref": "/web/api/api_json/inventory.json#/definitions/InventoryDeviceConfiguration"
+    },
+    "LabelDetails": {
+      "$ref": "/web/api/api_json/label.json#/definitions/LabelDetails"
+    },
+    "LabelDetailsUpdate": {
+      "$ref": "/web/api/api_json/label.json#/definitions/LabelDetailsUpdate"
+    },
+    "LoginAuthenticateError": {
+      "$ref": "/web/api/api_json/login.json#/definitions/LoginAuthenticateError"
+    },
+    "LoginAuthenticateResponse": {
+      "$ref": "/web/api/api_json/login.json#/definitions/LoginAuthenticateResponse"
+    },
+    "LoginChangePasswordError": {
+      "$ref": "/web/api/api_json/login.json#/definitions/LoginChangePasswordError"
+    },
+    "LoginGetUserProfileError": {
+      "$ref": "/web/api/api_json/login.json#/definitions/LoginGetUserProfileError"
+    },
+    "LoginModuleList": {
+      "$ref": "/web/api/api_json/login.json#/definitions/LoginModuleList"
+    },
+    "LoginResponseSuccess": {
+      "$ref": "/web/api/api_json/login.json#/definitions/LoginResponseSuccess"
+    },
+    "LoginRoles": {
+      "$ref": "/web/api/api_json/login.json#/definitions/LoginRoles"
+    },
+    "LoginUserAuthenticate": {
+      "$ref": "/web/api/api_json/login.json#/definitions/LoginUserAuthenticate"
+    },
+    "LoginUserObject": {
+      "$ref": "/web/api/api_json/login.json#/definitions/LoginUserObject"
+    },
+    "LogoutError": {
+      "$ref": "/web/api/api_json/login.json#/definitions/LogoutError"
+    },
+    "OnboardDevicesReq": {
+      "$ref": "/web/api/api_json/inventory.json#/definitions/OnboardDevicesReq"
+    },
+    "OnboardDevicesResp": {
+      "$ref": "/web/api/api_json/inventory.json#/definitions/OnboardDevicesResp"
+    },
+    "ProvisionStreamingReq": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/ProvisionStreamingReq"
+    },
+    "ProvisionStreamingResp": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/ProvisionStreamingResp"
+    },
+    "SSLBindCertWithCSRError": {
+      "$ref": "/web/api/api_json/ssl.json#/definitions/SSLBindCertWithCSRError"
+    },
+    "SSLBindCertWithCSRInput": {
+      "$ref": "/web/api/api_json/ssl.json#/definitions/SSLBindCertWithCSRInput"
+    },
+    "SSLCSRResponseJson": {
+      "$ref": "/web/api/api_json/ssl.json#/definitions/SSLCSRResponseJson"
+    },
+    "SSLCertificateDetailsResponseJson": {
+      "$ref": "/web/api/api_json/ssl.json#/definitions/SSLCertificateDetailsResponseJson"
+    },
+    "SSLCertificateDetailsResponseJsonWithoutKey": {
+      "$ref": "/web/api/api_json/ssl.json#/definitions/SSLCertificateDetailsResponseJsonWithoutKey"
+    },
+    "SSLDeleteCSRError": {
+      "$ref": "/web/api/api_json/ssl.json#/definitions/SSLDeleteCSRError"
+    },
+    "SSLDeleteProposedCertificateError": {
+      "$ref": "/web/api/api_json/ssl.json#/definitions/SSLDeleteProposedCertificateError"
+    },
+    "SSLExportCSRError": {
+      "$ref": "/web/api/api_json/ssl.json#/definitions/SSLExportCSRError"
+    },
+    "SSLExportCSRResponse": {
+      "$ref": "/web/api/api_json/ssl.json#/definitions/SSLExportCSRResponse"
+    },
+    "SSLGenerateCSRError": {
+      "$ref": "/web/api/api_json/ssl.json#/definitions/SSLGenerateCSRError"
+    },
+    "SSLGenerateCSRInputJson": {
+      "$ref": "/web/api/api_json/ssl.json#/definitions/SSLGenerateCSRInputJson"
+    },
+    "SSLGenerateCertificateError": {
+      "$ref": "/web/api/api_json/ssl.json#/definitions/SSLGenerateCertificateError"
+    },
+    "SSLGenerateCertificateInput": {
+      "$ref": "/web/api/api_json/ssl.json#/definitions/SSLGenerateCertificateInput"
+    },
+    "SSLGetCertificatesError": {
+      "$ref": "/web/api/api_json/ssl.json#/definitions/SSLGetCertificatesError"
+    },
+    "SSLImportCertAndPrivateKeyError": {
+      "$ref": "/web/api/api_json/ssl.json#/definitions/SSLImportCertAndPrivateKeyError"
+    },
+    "SSLImportCertAndPrivateKeyInput": {
+      "$ref": "/web/api/api_json/ssl.json#/definitions/SSLImportCertAndPrivateKeyInput"
+    },
+    "SSLInstallCertificateError": {
+      "$ref": "/web/api/api_json/ssl.json#/definitions/SSLInstallCertificateError"
+    },
+    "SSLResponseDataJson": {
+      "$ref": "/web/api/api_json/ssl.json#/definitions/SSLResponseDataJson"
+    },
+    "SSLResponseDataJsonWithEventIdAndType": {
+      "$ref": "/web/api/api_json/ssl.json#/definitions/SSLResponseDataJsonWithEventIdAndType"
+    },
+    "SoftwareRepository200Response": {
+      "$ref": "/web/api/api_json/softwareRepository.json#/definitions/SoftwareRepository200Response"
+    },
+    "SoftwareRepository400Response": {
+      "$ref": "/web/api/api_json/softwareRepository.json#/definitions/SoftwareRepository400Response"
+    },
+    "SoftwareRepository401Response": {
+      "$ref": "/web/api/api_json/softwareRepository.json#/definitions/SoftwareRepository401Response"
+    },
+    "SoftwareRepository409Response": {
+      "$ref": "/web/api/api_json/softwareRepository.json#/definitions/SoftwareRepository409Response"
+    },
+    "SoftwareRepository500Response": {
+      "$ref": "/web/api/api_json/softwareRepository.json#/definitions/SoftwareRepository500Response"
+    },
+    "SoftwareRepository502Response": {
+      "$ref": "/web/api/api_json/softwareRepository.json#/definitions/SoftwareRepository502Response"
+    },
+    "TrustedCertificate": {
+      "$ref": "/web/api/api_json/trustedCertificates.json#/definitions/TrustedCertificate"
+    },
+    "TrustedCertificates": {
+      "$ref": "/web/api/api_json/trustedCertificates.json#/definitions/TrustedCertificates"
+    },
+    "TrustedCertificatesArray": {
+      "$ref": "/web/api/api_json/trustedCertificates.json#/definitions/TrustedCertificatesArray"
+    },
+    "TrustedCertificatesCertDetail": {
+      "$ref": "/web/api/api_json/trustedCertificates.json#/definitions/TrustedCertificatesCertDetail"
+    },
+    "TrustedCertificatesDeleteError": {
+      "$ref": "/web/api/api_json/trustedCertificates.json#/definitions/TrustedCertificatesDeleteError"
+    },
+    "TrustedCertificatesDeleteResponse": {
+      "$ref": "/web/api/api_json/trustedCertificates.json#/definitions/TrustedCertificatesDeleteResponse"
+    },
+    "TrustedCertificatesExportError": {
+      "$ref": "/web/api/api_json/trustedCertificates.json#/definitions/TrustedCertificatesExportError"
+    },
+    "TrustedCertificatesGetCertDetailError": {
+      "$ref": "/web/api/api_json/trustedCertificates.json#/definitions/TrustedCertificatesGetCertDetailError"
+    },
+    "TrustedCertificatesGetCertsError": {
+      "$ref": "/web/api/api_json/trustedCertificates.json#/definitions/TrustedCertificatesGetCertsError"
+    },
+    "TrustedCertificatesUpload": {
+      "$ref": "/web/api/api_json/trustedCertificates.json#/definitions/TrustedCertificatesUpload"
+    },
+    "TrustedCertificatesUploadError": {
+      "$ref": "/web/api/api_json/trustedCertificates.json#/definitions/TrustedCertificatesUploadError"
+    },
+    "TrustedCertificatesUploadResponse": {
+      "$ref": "/web/api/api_json/trustedCertificates.json#/definitions/TrustedCertificatesUploadResponse"
+    },
+    "UpdateNotesToLabel": {
+      "$ref": "/web/api/api_json/label.json#/definitions/UpdateNotesToLabel"
+    },
+    "addLabelResponse": {
+      "$ref": "/web/api/api_json/label.json#/definitions/addLabelResponse"
+    },
+    "addTaskLog": {
+      "$ref": "/web/api/api_json/task.json#/definitions/addTaskLog"
+    },
+    "addTempAction": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/addTempAction"
+    },
+    "addTempGeneratedConfigletModel": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/addTempGeneratedConfigletModel"
+    },
+    "appliedDeviceResponse": {
+      "$ref": "/web/api/api_json/label.json#/definitions/appliedDeviceResponse"
+    },
+    "autoConfigletGeneratorData": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/autoConfigletGeneratorData"
+    },
+    "autoConfigletGeneratorDataArray": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/autoConfigletGeneratorDataArray"
+    },
+    "autoConfigletGeneratorDataconfiglet": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/autoConfigletGeneratorDataconfiglet"
+    },
+    "cancelImages": {
+      "$ref": "/web/api/api_json/image.json#/definitions/cancelImages"
+    },
+    "checkCompliance": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/checkCompliance"
+    },
+    "configItemModel": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/configItemModel"
+    },
+    "configNote": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/configNote"
+    },
+    "configUpdate": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/configUpdate"
+    },
+    "configlet/validateConfigErrorType": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/configlet~1validateConfigErrorType"
+    },
+    "configlet/validateConfigWarningType": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/configlet~1validateConfigWarningType"
+    },
+    "configletBuilder": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/configletBuilder"
+    },
+    "configletBuilderAdd": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/configletBuilderAdd"
+    },
+    "configletBuilderPreview": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/configletBuilderPreview"
+    },
+    "configletModel": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/configletModel"
+    },
+    "containerjson": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/containerjson"
+    },
+    "dataSuccessResponse": {
+      "$ref": "/web/api/api_json/label.json#/definitions/dataSuccessResponse"
+    },
+    "deleteConfiglet": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/deleteConfiglet"
+    },
+    "deleteImage": {
+      "$ref": "/web/api/api_json/image.json#/definitions/deleteImage"
+    },
+    "deleteImg": {
+      "$ref": "/web/api/api_json/image.json#/definitions/deleteImg"
+    },
+    "deletedExtensions": {
+      "$ref": "/web/api/api_json/image.json#/definitions/deletedExtensions"
+    },
+    "designedConfig": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/designedConfig"
+    },
+    "designedConfig2": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/designedConfig2"
+    },
+    "deviceLabelResponse": {
+      "$ref": "/web/api/api_json/label.json#/definitions/deviceLabelResponse"
+    },
+    "exportConfigletsModel": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/exportConfigletsModel"
+    },
+    "getConfigletByAnyMapperModel": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/getConfigletByAnyMapperModel"
+    },
+    "getConfigletsByNetelementIdModel": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/getConfigletsByNetelementIdModel"
+    },
+    "getContainerinfobyidjson": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/getContainerinfobyidjson"
+    },
+    "getExternalEventData": {
+      "$ref": "/web/api/api_json/event.json#/definitions/getExternalEventData"
+    },
+    "getImageBundleAppliedDevicesData": {
+      "$ref": "/web/api/api_json/image.json#/definitions/getImageBundleAppliedDevicesData"
+    },
+    "getImageBundleByAnyIdModel": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/getImageBundleByAnyIdModel"
+    },
+    "getImageBundleByAnyMapperModel": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/getImageBundleByAnyMapperModel"
+    },
+    "getImagesBundleData": {
+      "$ref": "/web/api/api_json/image.json#/definitions/getImagesBundleData"
+    },
+    "getImagesBundleDetails": {
+      "$ref": "/web/api/api_json/image.json#/definitions/getImagesBundleDetails"
+    },
+    "getImagesData": {
+      "$ref": "/web/api/api_json/image.json#/definitions/getImagesData"
+    },
+    "getLabelsResponse": {
+      "$ref": "/web/api/api_json/label.json#/definitions/getLabelsResponse"
+    },
+    "getMapperElementsModel": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/getMapperElementsModel"
+    },
+    "getTempConfigsByContainerIdModel": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/getTempConfigsByContainerIdModel"
+    },
+    "getTempConfigsByNetelementIdModel": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/getTempConfigsByNetelementIdModel"
+    },
+    "image": {
+      "$ref": "/web/api/api_json/image.json#/definitions/image"
+    },
+    "imageBundleMapperContent": {
+      "$ref": "/web/api/api_json/image.json#/definitions/imageBundleMapperContent"
+    },
+    "imageBundleMapperField": {
+      "$ref": "/web/api/api_json/image.json#/definitions/imageBundleMapperField"
+    },
+    "imageData": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/imageData"
+    },
+    "imageSaveActionData": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/imageSaveActionData"
+    },
+    "imagesBundleData": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/imagesBundleData"
+    },
+    "ipConnectivity": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/ipConnectivity"
+    },
+    "labelData": {
+      "$ref": "/web/api/api_json/label.json#/definitions/labelData"
+    },
+    "labelInfoResponse": {
+      "$ref": "/web/api/api_json/label.json#/definitions/labelInfoResponse"
+    },
+    "lastRetrivedAudit": {
+      "$ref": "/web/api/api_json/audit.json#/definitions/lastRetrivedAudit"
+    },
+    "notes": {
+      "$ref": "/web/api/api_json/image.json#/definitions/notes"
+    },
+    "notesWorkFlow": {
+      "$ref": "/web/api/api_json/task.json#/definitions/notesWorkFlow"
+    },
+    "provisionDeviceModel": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/provisionDeviceModel"
+    },
+    "provisionedDeviceRespModel": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/provisionedDeviceRespModel"
+    },
+    "role/getAppliedUsersList": {
+      "$ref": "/web/api/api_json/role.json#/definitions/role~1getAppliedUsersList"
+    },
+    "saveUpdateImages": {
+      "$ref": "/web/api/api_json/image.json#/definitions/saveUpdateImages"
+    },
+    "searchtopologyjson": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/searchtopologyjson"
+    },
+    "taskid": {
+      "$ref": "/web/api/api_json/task.json#/definitions/taskid"
+    },
+    "tempProposedActionModel": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/tempProposedActionModel"
+    },
+    "updateImage": {
+      "$ref": "/web/api/api_json/image.json#/definitions/updateImage"
+    },
+    "updateReconcile": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/updateReconcile"
+    },
+    "updateReconcileConfigletModel": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/updateReconcileConfigletModel"
+    },
+    "v2/errors": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/v2~1errors"
+    },
+    "v2/validateandcomparejson": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/v2~1validateandcomparejson"
+    },
+    "validateAndCompareConfiglets": {
+      "$ref": "/web/api/api_json/provisioning.json#/definitions/validateAndCompareConfiglets"
+    },
+    "validateConfig": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/validateConfig"
+    },
+    "validateconfigletBuilderScript": {
+      "$ref": "/web/api/api_json/configlet.json#/definitions/validateconfigletBuilderScript"
+    }
+  },
+  "info": {
+    "description": "REST APIs for CloudVision Cluster Management and Network Provisioning.\n\n## Migration to Resource APIs\n\nCloudVision is migrating to state-based APIs supporting read, write, and subscribe operations for all cluster management, network provisioning, and network telemetry information. These APIs are exposed over gRPC and websocket endpoints, as well as as REST endpoints over HTTPS.\n\nAPIs with Resource API alternatives available are called out below.\n\n## API Deprecation Process\n\nCloudVision's APIs are versioned and supported across release trains.\n\nAPIs are marked as deprecated at least one major release train prior to removal, with instructions on the alternative API to use. Deprecated APIs are explicitly called out below.\n",
+    "title": "CloudVision REST APIs",
+    "version": ""
+  },
+  "paths": {
+    "/aaa/createServer.do": {
+      "$ref": "/web/api/api_json/aaa.json#/paths/~1aaa~1createServer.do"
+    },
+    "/aaa/deleteServer.do": {
+      "$ref": "/web/api/api_json/aaa.json#/paths/~1aaa~1deleteServer.do"
+    },
+    "/aaa/editServer.do": {
+      "$ref": "/web/api/api_json/aaa.json#/paths/~1aaa~1editServer.do"
+    },
+    "/aaa/getAAADetailsById.do": {
+      "$ref": "/web/api/api_json/aaa.json#/paths/~1aaa~1getAAADetailsById.do"
+    },
+    "/aaa/getServerById.do": {
+      "$ref": "/web/api/api_json/aaa.json#/paths/~1aaa~1getServerById.do"
+    },
+    "/aaa/getServers.do": {
+      "$ref": "/web/api/api_json/aaa.json#/paths/~1aaa~1getServers.do"
+    },
+    "/aaa/saveAAADetails.do": {
+      "$ref": "/web/api/api_json/aaa.json#/paths/~1aaa~1saveAAADetails.do"
+    },
+    "/aaa/testServerConnectivity.do": {
+      "$ref": "/web/api/api_json/aaa.json#/paths/~1aaa~1testServerConnectivity.do"
+    },
+    "/aaa/unlockUsers": {
+      "$ref": "/web/api/api_json/aaa.json#/paths/~1aaa~1unlockUsers"
+    },
+    "/audit/exportLogs.do": {
+      "$ref": "/web/api/api_json/audit.json#/paths/~1audit~1exportLogs.do"
+    },
+    "/audit/getLogs.do": {
+      "$ref": "/web/api/api_json/audit.json#/paths/~1audit~1getLogs.do"
+    },
+    "/configlet/addConfiglet.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1addConfiglet.do"
+    },
+    "/configlet/addConfigletBuilder.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1addConfigletBuilder.do"
+    },
+    "/configlet/addConfigletsAndAssociatedMappers.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1addConfigletsAndAssociatedMappers.do"
+    },
+    "/configlet/addNoteToConfiglet.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1addNoteToConfiglet.do"
+    },
+    "/configlet/addTempConfigletBuilder.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1addTempConfigletBuilder.do"
+    },
+    "/configlet/addTempGeneratedConfiglet.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1addTempGeneratedConfiglet.do"
+    },
+    "/configlet/autoConfigletGenerator.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1autoConfigletGenerator.do"
+    },
+    "/configlet/cancelConfigletBuilder.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1cancelConfigletBuilder.do"
+    },
+    "/configlet/configletBuilderPreview.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1configletBuilderPreview.do"
+    },
+    "/configlet/deleteConfiglet.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1deleteConfiglet.do"
+    },
+    "/configlet/exportConfiglets.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1exportConfiglets.do"
+    },
+    "/configlet/getAppliedContainers.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1getAppliedContainers.do"
+    },
+    "/configlet/getAppliedDeviceCount.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1getAppliedDeviceCount.do"
+    },
+    "/configlet/getAppliedDevices.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1getAppliedDevices.do"
+    },
+    "/configlet/getConfigletBuilder.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1getConfigletBuilder.do"
+    },
+    "/configlet/getConfigletById.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1getConfigletById.do"
+    },
+    "/configlet/getConfigletByName.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1getConfigletByName.do"
+    },
+    "/configlet/getConfigletHistory.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1getConfigletHistory.do"
+    },
+    "/configlet/getConfiglets.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1getConfiglets.do"
+    },
+    "/configlet/getConfigletsAndAssociatedMappers.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1getConfigletsAndAssociatedMappers.do"
+    },
+    "/configlet/getCurrentManagementIp.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1getCurrentManagementIp.do"
+    },
+    "/configlet/getHierarchicalBuilderCount.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1getHierarchicalBuilderCount.do"
+    },
+    "/configlet/getHierarchicalConfigletBuilders.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1getHierarchicalConfigletBuilders.do"
+    },
+    "/configlet/getManagementIp.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1getManagementIp.do"
+    },
+    "/configlet/importConfiglets.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1importConfiglets.do"
+    },
+    "/configlet/searchConfiglets.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1searchConfiglets.do"
+    },
+    "/configlet/updateConfiglet.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1updateConfiglet.do"
+    },
+    "/configlet/updateConfigletBuilder.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1updateConfigletBuilder.do"
+    },
+    "/configlet/validateConfig.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1validateConfig.do"
+    },
+    "/configlet/validateConfigHistory.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1validateConfigHistory.do"
+    },
+    "/configlet/validateScript.do": {
+      "$ref": "/web/api/api_json/configlet.json#/paths/~1configlet~1validateScript.do"
+    },
+    "/cvpInfo/getCvpInfo.do": {
+      "$ref": "/web/api/api_json/cvpInfo.json#/paths/~1cvpInfo~1getCvpInfo.do"
+    },
+    "/event/cancelEvent.do": {
+      "$ref": "/web/api/api_json/event.json#/paths/~1event~1cancelEvent.do"
+    },
+    "/event/getAllEvents.do": {
+      "$ref": "/web/api/api_json/event.json#/paths/~1event~1getAllEvents.do"
+    },
+    "/event/getErrorEvents.do": {
+      "$ref": "/web/api/api_json/event.json#/paths/~1event~1getErrorEvents.do"
+    },
+    "/event/getEventById.do": {
+      "$ref": "/web/api/api_json/event.json#/paths/~1event~1getEventById.do"
+    },
+    "/event/getEventDataById.do": {
+      "$ref": "/web/api/api_json/event.json#/paths/~1event~1getEventDataById.do"
+    },
+    "/event/getEventInfo.do": {
+      "$ref": "/web/api/api_json/event.json#/paths/~1event~1getEventInfo.do"
+    },
+    "/event/markAsRead.do": {
+      "$ref": "/web/api/api_json/event.json#/paths/~1event~1markAsRead.do"
+    },
+    "/image/addImage.do": {
+      "$ref": "/web/api/api_json/image.json#/paths/~1image~1addImage.do"
+    },
+    "/image/addNotesToImageBundle.do": {
+      "$ref": "/web/api/api_json/image.json#/paths/~1image~1addNotesToImageBundle.do"
+    },
+    "/image/cancelImages.do": {
+      "$ref": "/web/api/api_json/image.json#/paths/~1image~1cancelImages.do"
+    },
+    "/image/deleteImageBundles.do": {
+      "$ref": "/web/api/api_json/image.json#/paths/~1image~1deleteImageBundles.do"
+    },
+    "/image/getAppliedDeviceCount.do": {
+      "$ref": "/web/api/api_json/image.json#/paths/~1image~1getAppliedDeviceCount.do"
+    },
+    "/image/getImageBundleAppliedContainers.do": {
+      "$ref": "/web/api/api_json/image.json#/paths/~1image~1getImageBundleAppliedContainers.do"
+    },
+    "/image/getImageBundleAppliedDevices.do": {
+      "$ref": "/web/api/api_json/image.json#/paths/~1image~1getImageBundleAppliedDevices.do"
+    },
+    "/image/getImageBundleByName.do": {
+      "$ref": "/web/api/api_json/image.json#/paths/~1image~1getImageBundleByName.do"
+    },
+    "/image/getImageBundles.do": {
+      "$ref": "/web/api/api_json/image.json#/paths/~1image~1getImageBundles.do"
+    },
+    "/image/getImages.do": {
+      "$ref": "/web/api/api_json/image.json#/paths/~1image~1getImages.do"
+    },
+    "/image/saveImageBundle.do": {
+      "$ref": "/web/api/api_json/image.json#/paths/~1image~1saveImageBundle.do"
+    },
+    "/image/updateImageBundle.do": {
+      "$ref": "/web/api/api_json/image.json#/paths/~1image~1updateImageBundle.do"
+    },
+    "/image/v2/getImageBundleByName.do": {
+      "$ref": "/web/api/api_json/image.json#/paths/~1image~1v2~1getImageBundleByName.do"
+    },
+    "/image/v2/getImageBundles.do": {
+      "$ref": "/web/api/api_json/image.json#/paths/~1image~1v2~1getImageBundles.do"
+    },
+    "/inventory/containers": {
+      "$ref": "/web/api/api_json/inventory.json#/paths/~1inventory~1containers"
+    },
+    "/inventory/device/config": {
+      "$ref": "/web/api/api_json/inventory.json#/paths/~1inventory~1device~1config"
+    },
+    "/inventory/devices": {
+      "$ref": "/web/api/api_json/inventory.json#/paths/~1inventory~1devices"
+    },
+    "/label/addLabel.do": {
+      "$ref": "/web/api/api_json/label.json#/paths/~1label~1addLabel.do"
+    },
+    "/label/deleteLabel.do": {
+      "$ref": "/web/api/api_json/label.json#/paths/~1label~1deleteLabel.do"
+    },
+    "/label/getAppliedDevices.do": {
+      "$ref": "/web/api/api_json/label.json#/paths/~1label~1getAppliedDevices.do"
+    },
+    "/label/getLabelInfo.do": {
+      "$ref": "/web/api/api_json/label.json#/paths/~1label~1getLabelInfo.do"
+    },
+    "/label/getLabels.do": {
+      "$ref": "/web/api/api_json/label.json#/paths/~1label~1getLabels.do"
+    },
+    "/label/updateLabel.do": {
+      "$ref": "/web/api/api_json/label.json#/paths/~1label~1updateLabel.do"
+    },
+    "/label/updateNotesToLabel.do": {
+      "$ref": "/web/api/api_json/label.json#/paths/~1label~1updateNotesToLabel.do"
+    },
+    "/login/authenticate.do": {
+      "$ref": "/web/api/api_json/login.json#/paths/~1login~1authenticate.do"
+    },
+    "/login/changePassword.do": {
+      "$ref": "/web/api/api_json/login.json#/paths/~1login~1changePassword.do"
+    },
+    "/login/getCVPUserProfile.do": {
+      "$ref": "/web/api/api_json/login.json#/paths/~1login~1getCVPUserProfile.do"
+    },
+    "/login/logout.do": {
+      "$ref": "/web/api/api_json/login.json#/paths/~1login~1logout.do"
+    },
+    "/packaging/v1/packages": {
+      "$ref": "/web/api/api_json/packaging.json#/paths/~1packaging~1v1~1packages"
+    },
+    "/packaging/v1/packages/{package-id}": {
+      "$ref": "/web/api/api_json/packaging.json#/paths/~1packaging~1v1~1packages~1{package-id}"
+    },
+    "/provisioning/addTempAction.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1addTempAction.do"
+    },
+    "/provisioning/cancelReconcile.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1cancelReconcile.do"
+    },
+    "/provisioning/checkCompliance.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1checkCompliance.do"
+    },
+    "/provisioning/containerLevelReconcile.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1containerLevelReconcile.do"
+    },
+    "/provisioning/deleteAllTempAction.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1deleteAllTempAction.do"
+    },
+    "/provisioning/deleteTempAction.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1deleteTempAction.do"
+    },
+    "/provisioning/devices": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1devices"
+    },
+    "/provisioning/filterTopology.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1filterTopology.do"
+    },
+    "/provisioning/getAllTempActions.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1getAllTempActions.do"
+    },
+    "/provisioning/getConfigletsByContainerId.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1getConfigletsByContainerId.do"
+    },
+    "/provisioning/getConfigletsByNetElementId.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1getConfigletsByNetElementId.do"
+    },
+    "/provisioning/getContainerInfoById.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1getContainerInfoById.do"
+    },
+    "/provisioning/getImageBundleByContainerId.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1getImageBundleByContainerId.do"
+    },
+    "/provisioning/getImageBundleByNetElementId.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1getImageBundleByNetElementId.do"
+    },
+    "/provisioning/getImageForTask.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1getImageForTask.do"
+    },
+    "/provisioning/getLabelsByNetElementId.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1getLabelsByNetElementId.do"
+    },
+    "/provisioning/getNetElementById.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1getNetElementById.do"
+    },
+    "/provisioning/getNetElementImageById.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1getNetElementImageById.do"
+    },
+    "/provisioning/getNetElementInfoById.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1getNetElementInfoById.do"
+    },
+    "/provisioning/getNetElementList.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1getNetElementList.do"
+    },
+    "/provisioning/getProposedContainer.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1getProposedContainer.do"
+    },
+    "/provisioning/getTempConfigsByContainerId.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1getTempConfigsByContainerId.do"
+    },
+    "/provisioning/getTempConfigsByNetElementId.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1getTempConfigsByNetElementId.do"
+    },
+    "/provisioning/getTempLabelsByNetElementId.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1getTempLabelsByNetElementId.do"
+    },
+    "/provisioning/getTempSessionReconciledConfiglets.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1getTempSessionReconciledConfiglets.do"
+    },
+    "/provisioning/getconfigfortask.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1getconfigfortask.do"
+    },
+    "/provisioning/ipConnectivityTest.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1ipConnectivityTest.do"
+    },
+    "/provisioning/saveTopology.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1saveTopology.do"
+    },
+    "/provisioning/searchTopology.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1searchTopology.do"
+    },
+    "/provisioning/updateNetElementImageById.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1updateNetElementImageById.do"
+    },
+    "/provisioning/updateReconcileConfiglet.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1updateReconcileConfiglet.do"
+    },
+    "/provisioning/v2/getconfigfortask.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1v2~1getconfigfortask.do"
+    },
+    "/provisioning/v2/saveTopology.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1v2~1saveTopology.do"
+    },
+    "/provisioning/v2/validateAndCompareConfiglets.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1v2~1validateAndCompareConfiglets.do"
+    },
+    "/provisioning/v3/filterTopology.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1v3~1filterTopology.do"
+    },
+    "/provisioning/v3/getConfiglets.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1v3~1getConfiglets.do"
+    },
+    "/provisioning/v3/getContainerInfo.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1v3~1getContainerInfo.do"
+    },
+    "/provisioning/v3/getconfigfortask.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1v3~1getconfigfortask.do"
+    },
+    "/provisioning/v3/searchConfiglets.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1v3~1searchConfiglets.do"
+    },
+    "/provisioning/v3/searchTopology.do": {
+      "$ref": "/web/api/api_json/provisioning.json#/paths/~1provisioning~1v3~1searchTopology.do"
+    },
+    "/role/createRole.do": {
+      "$ref": "/web/api/api_json/role.json#/paths/~1role~1createRole.do"
+    },
+    "/role/deleteRoles.do": {
+      "$ref": "/web/api/api_json/role.json#/paths/~1role~1deleteRoles.do"
+    },
+    "/role/getAppliedUserCount.do": {
+      "$ref": "/web/api/api_json/role.json#/paths/~1role~1getAppliedUserCount.do"
+    },
+    "/role/getAppliedUsers.do": {
+      "$ref": "/web/api/api_json/role.json#/paths/~1role~1getAppliedUsers.do"
+    },
+    "/role/getRole.do": {
+      "$ref": "/web/api/api_json/role.json#/paths/~1role~1getRole.do"
+    },
+    "/role/getRoles.do": {
+      "$ref": "/web/api/api_json/role.json#/paths/~1role~1getRoles.do"
+    },
+    "/role/updateRole.do": {
+      "$ref": "/web/api/api_json/role.json#/paths/~1role~1updateRole.do"
+    },
+    "/rollback/addNetworkRollbackTempActions.do": {
+      "$ref": "/web/api/api_json/rollback.json#/paths/~1rollback~1addNetworkRollbackTempActions.do"
+    },
+    "/rollback/addTempRollbackAction.do": {
+      "$ref": "/web/api/api_json/rollback.json#/paths/~1rollback~1addTempRollbackAction.do"
+    },
+    "/rollback/getNetElementsForRollback.do": {
+      "$ref": "/web/api/api_json/rollback.json#/paths/~1rollback~1getNetElementsForRollback.do"
+    },
+    "/snapshot/deviceConfigs/{deviceID}": {
+      "$ref": "/web/api/api_json/snapshot.json#/paths/~1snapshot~1deviceConfigs~1{deviceID}"
+    },
+    "/snapshot/getSnapshotChartData.do": {
+      "$ref": "/web/api/api_json/snapshot.json#/paths/~1snapshot~1getSnapshotChartData.do"
+    },
+    "/snapshot/hierarchychangeinfo": {
+      "$ref": "/web/api/api_json/snapshot.json#/paths/~1snapshot~1hierarchychangeinfo"
+    },
+    "/snapshot/template": {
+      "$ref": "/web/api/api_json/snapshot.json#/paths/~1snapshot~1template"
+    },
+    "/snapshot/templates": {
+      "$ref": "/web/api/api_json/snapshot.json#/paths/~1snapshot~1templates"
+    },
+    "/snapshot/templates/info": {
+      "$ref": "/web/api/api_json/snapshot.json#/paths/~1snapshot~1templates~1info"
+    },
+    "/snapshot/templates/schedule": {
+      "$ref": "/web/api/api_json/snapshot.json#/paths/~1snapshot~1templates~1schedule"
+    },
+    "/snapshot/templates/{templateKey}/capture": {
+      "$ref": "/web/api/api_json/snapshot.json#/paths/~1snapshot~1templates~1{templateKey}~1capture"
+    },
+    "/softwaremanagement/v1/uploads": {
+      "$ref": "/web/api/api_json/softwareRepository.json#/paths/~1softwaremanagement~1v1~1uploads"
+    },
+    "/ssl/bindCertWithCSR.do": {
+      "$ref": "/web/api/api_json/ssl.json#/paths/~1ssl~1bindCertWithCSR.do"
+    },
+    "/ssl/deleteCSR.do": {
+      "$ref": "/web/api/api_json/ssl.json#/paths/~1ssl~1deleteCSR.do"
+    },
+    "/ssl/deleteProposedCertificate.do": {
+      "$ref": "/web/api/api_json/ssl.json#/paths/~1ssl~1deleteProposedCertificate.do"
+    },
+    "/ssl/exportCSR.do": {
+      "$ref": "/web/api/api_json/ssl.json#/paths/~1ssl~1exportCSR.do"
+    },
+    "/ssl/generateCSR.do": {
+      "$ref": "/web/api/api_json/ssl.json#/paths/~1ssl~1generateCSR.do"
+    },
+    "/ssl/generateCertificate.do": {
+      "$ref": "/web/api/api_json/ssl.json#/paths/~1ssl~1generateCertificate.do"
+    },
+    "/ssl/getCertificate.do": {
+      "$ref": "/web/api/api_json/ssl.json#/paths/~1ssl~1getCertificate.do"
+    },
+    "/ssl/importCertAndPrivateKey.do": {
+      "$ref": "/web/api/api_json/ssl.json#/paths/~1ssl~1importCertAndPrivateKey.do"
+    },
+    "/ssl/installCertificate.do": {
+      "$ref": "/web/api/api_json/ssl.json#/paths/~1ssl~1installCertificate.do"
+    },
+    "/task/addNoteToTask.do": {
+      "$ref": "/web/api/api_json/task.json#/paths/~1task~1addNoteToTask.do"
+    },
+    "/task/cancelTask.do": {
+      "$ref": "/web/api/api_json/task.json#/paths/~1task~1cancelTask.do"
+    },
+    "/task/executeTask.do": {
+      "$ref": "/web/api/api_json/task.json#/paths/~1task~1executeTask.do"
+    },
+    "/task/getTaskById.do": {
+      "$ref": "/web/api/api_json/task.json#/paths/~1task~1getTaskById.do"
+    },
+    "/task/getTaskStatusById.do": {
+      "$ref": "/web/api/api_json/task.json#/paths/~1task~1getTaskStatusById.do"
+    },
+    "/task/getTasks.do": {
+      "$ref": "/web/api/api_json/task.json#/paths/~1task~1getTasks.do"
+    },
+    "/trustedCertificates/delete.do": {
+      "$ref": "/web/api/api_json/trustedCertificates.json#/paths/~1trustedCertificates~1delete.do"
+    },
+    "/trustedCertificates/export.do": {
+      "$ref": "/web/api/api_json/trustedCertificates.json#/paths/~1trustedCertificates~1export.do"
+    },
+    "/trustedCertificates/getCertInfo.do": {
+      "$ref": "/web/api/api_json/trustedCertificates.json#/paths/~1trustedCertificates~1getCertInfo.do"
+    },
+    "/trustedCertificates/getCerts.do": {
+      "$ref": "/web/api/api_json/trustedCertificates.json#/paths/~1trustedCertificates~1getCerts.do"
+    },
+    "/trustedCertificates/upload.do": {
+      "$ref": "/web/api/api_json/trustedCertificates.json#/paths/~1trustedCertificates~1upload.do"
+    },
+    "/user/addUser.do": {
+      "$ref": "/web/api/api_json/user.json#/paths/~1user~1addUser.do"
+    },
+    "/user/deleteUsers.do": {
+      "$ref": "/web/api/api_json/user.json#/paths/~1user~1deleteUsers.do"
+    },
+    "/user/enableDisableUsers.do": {
+      "$ref": "/web/api/api_json/user.json#/paths/~1user~1enableDisableUsers.do"
+    },
+    "/user/getOnlineUserCount.do": {
+      "$ref": "/web/api/api_json/user.json#/paths/~1user~1getOnlineUserCount.do"
+    },
+    "/user/getUser.do": {
+      "$ref": "/web/api/api_json/user.json#/paths/~1user~1getUser.do"
+    },
+    "/user/getUsers.do": {
+      "$ref": "/web/api/api_json/user.json#/paths/~1user~1getUsers.do"
+    },
+    "/user/updateUser.do": {
+      "$ref": "/web/api/api_json/user.json#/paths/~1user~1updateUser.do"
+    },
+    "/workflow/addWorkOrderLog.do": {
+      "$ref": "/web/api/api_json/task.json#/paths/~1workflow~1addWorkOrderLog.do"
+    },
+    "/workflow/exportLogs.do": {
+      "$ref": "/web/api/api_json/task.json#/paths/~1workflow~1exportLogs.do"
+    }
+  },
+  "swagger": "2.0",
+  "tags": [
+    {
+      "description": "AAA Operations",
+      "name": "aaa"
+    },
+    {
+      "description": "Audit Log Operations",
+      "name": "audit"
+    },
+    {
+      "description": "Configlet Operations",
+      "name": "configlet"
+    },
+    {
+      "description": "CVP Cluster Information Operations",
+      "name": "cvpInfo"
+    },
+    {
+      "description": "UI Event Notification Operations",
+      "name": "event"
+    },
+    {
+      "description": "Image Operations",
+      "name": "image"
+    },
+    {
+      "description": "Device Inventory Operations",
+      "name": "inventory"
+    },
+    {
+      "description": "Device Label Operations",
+      "name": "label"
+    },
+    {
+      "description": "Login Operations",
+      "name": "login"
+    },
+    {
+      "description": "Package Management Operations",
+      "name": "packaging"
+    },
+    {
+      "description": "Network Provisioning Operations",
+      "name": "provisioning"
+    },
+    {
+      "description": "Role Management Operations",
+      "name": "role"
+    },
+    {
+      "description": "Rollback Operations",
+      "name": "rollback"
+    },
+    {
+      "description": "Device Snapshot Operations",
+      "name": "snapshot"
+    },
+    {
+      "description": "Software Repository Operations",
+      "name": "softwareRepository"
+    },
+    {
+      "description": "SSL Operations",
+      "name": "ssl"
+    },
+    {
+      "description": "Task Operations",
+      "name": "task"
+    },
+    {
+      "description": "Trusted Certificate Operations",
+      "name": "trustedCertificates"
+    },
+    {
+      "description": "User Management Operations",
+      "name": "user"
+    }
+  ]
+}
