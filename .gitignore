@@ -1,0 +1,16 @@
+# Python venv used by path-discovery tooling (Sprint 2 F.1, future per-sprint re-discovery).
+# venv is environment-specific and never checked in; the script in path-discovery/ is.
+.venv/
+
+# Python caches / build artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Local-only env files (never commit JWTs or tenant credentials)
+.env
+.env.local
+
+# macOS
+.DS_Store
