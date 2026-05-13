@@ -99,10 +99,12 @@ struct DiagnosticRunner {
                     continuation.yield(.running)
                     let deadline = Date().addingTimeInterval(60)
                     var lastReported: String? = nil
-                    while Date() < deadline {
-                        if Task.isCancelled { break }
+                    var reachedTerminal = false
+                    poll: while Date() < deadline {
+                        if Task.isCancelled { break poll }
                         let snap = try await service.get(ccId: id)
                         if snap.isTerminal {
+                            reachedTerminal = true
                             if snap.didSucceed {
                                 continuation.yield(.completed(snap))
                             } else {
@@ -110,7 +112,7 @@ struct DiagnosticRunner {
                                     reason: snap.error ?? "ChangeControl completed with unspecified error"
                                 ))
                             }
-                            break
+                            break poll
                         }
                         // Suppress duplicate "running" yields when status didn't change.
                         if snap.status != lastReported {
@@ -119,7 +121,7 @@ struct DiagnosticRunner {
                         }
                         try? await Task.sleep(for: .seconds(2))
                     }
-                    if !Task.isCancelled {
+                    if !reachedTerminal && !Task.isCancelled {
                         // Reached deadline without terminal status — surface as failure.
                         continuation.yield(.failed(
                             reason: "Timed out waiting for ChangeControl to complete (60s). " +
