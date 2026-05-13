@@ -14,10 +14,13 @@ struct LocateView: View {
 
     @State private var searchTerm: String = ""
     @State private var endpointState: EndpointState = .idle
+    @State private var lldpHits: [LLDPSearchService.Hit] = []
+    @State private var lldpSearching: Bool = false
     @State private var allDevices: [Device] = []
     @State private var devicesLoaded = false
     @State private var recents: [String] = []
     @State private var searchTask: Task<Void, Never>?
+    @State private var lldpTask: Task<Void, Never>?
 
     private let recentsStore = RecentSearchesStore()
 
@@ -148,9 +151,10 @@ struct LocateView: View {
     private var resultsView: some View {
         let devices = matchingDevices
         let endpointMatches = endpointResults
-        let hasAnyResults = !devices.isEmpty || !endpointMatches.isEmpty
+        let hasAnyResults = !devices.isEmpty || !endpointMatches.isEmpty || !lldpHits.isEmpty
+        let allTerminal = isEndpointTerminal && !lldpSearching
 
-        if !hasAnyResults && isEndpointTerminal {
+        if !hasAnyResults && allTerminal {
             EmptyStateView(
                 systemImage: "questionmark.circle",
                 title: "No matches",
@@ -189,9 +193,58 @@ struct LocateView: View {
                         }
                     }
                 }
+
+                Section {
+                    lldpSection
+                } header: {
+                    HStack {
+                        Text(lldpHeaderText)
+                            .font(.system(size: 13, weight: .semibold))
+                            .foregroundStyle(Brand.graphite)
+                            .textCase(nil)
+                        if lldpSearching {
+                            Spacer()
+                            ProgressView().controlSize(.mini)
+                        }
+                    }
+                }
             }
             .listStyle(.insetGrouped)
         }
+    }
+
+    @ViewBuilder
+    private var lldpSection: some View {
+        if lldpSearching && lldpHits.isEmpty {
+            HStack {
+                ProgressView().controlSize(.small)
+                Text("Scanning LLDP across \(allDevices.count) switches…")
+                    .font(.caption)
+                    .foregroundStyle(Brand.slate)
+            }
+        } else if lldpHits.isEmpty && isEndpointTerminal {
+            Text("No LLDP-discovered hosts matched \"\(searchTerm)\".")
+                .font(.caption)
+                .foregroundStyle(Brand.slate)
+        } else {
+            ForEach(lldpHits) { hit in
+                NavigationLink {
+                    if let device = allDevices.first(where: { $0.key.deviceId == hit.deviceId }) {
+                        DeviceHealthView(deviceId: hit.deviceId, prefill: device)
+                    }
+                } label: {
+                    LLDPHitRow(hit: hit, hostname: hostnameForDevice(hit.deviceId))
+                }
+            }
+        }
+    }
+
+    private var lldpHeaderText: String {
+        lldpHits.isEmpty ? "Discovered (LLDP)" : "Discovered (LLDP) (\(lldpHits.count))"
+    }
+
+    private func hostnameForDevice(_ id: String) -> String {
+        allDevices.first { $0.key.deviceId == id }?.displayName ?? id
     }
 
     @ViewBuilder
@@ -275,11 +328,17 @@ struct LocateView: View {
             return
         }
 
+        // Cancel any in-flight searches.
         searchTask?.cancel()
+        lldpTask?.cancel()
         endpointState = .loading
-        let client = CVHTTPClient(tenantURL: url, jwt: auth.jwt)
-        let service = EndpointLocationService(client: client)
+        lldpHits = []
+        lldpSearching = false
 
+        let httpClient = CVHTTPClient(tenantURL: url, jwt: auth.jwt)
+        let service = EndpointLocationService(client: httpClient)
+
+        // Exact-match endpoint search (REST).
         searchTask = Task { @MainActor in
             do {
                 let resp = try await service.find(searchTerm: trimmed)
@@ -295,6 +354,26 @@ struct LocateView: View {
                 endpointState = .failure(.network(URLError(.unknown)))
             }
         }
+
+        // LLDP substring search (Connector). Fires only if we have a cached device list —
+        // otherwise we'd be searching nothing useful.
+        guard !allDevices.isEmpty else { return }
+        lldpSearching = true
+        lldpTask = Task { @MainActor in
+            defer { lldpSearching = false }
+            do {
+                let connector = try ConnectorClient(tenantURL: url, jwt: auth.jwt)
+                defer { Task { await connector.shutdown() } }
+                let svc = LLDPSearchService(client: connector)
+                let serials = allDevices.map { $0.key.deviceId }
+                let hits = await svc.search(term: trimmed, across: serials)
+                if !Task.isCancelled {
+                    lldpHits = hits.sorted { $0.sysName.localizedCaseInsensitiveCompare($1.sysName) == .orderedAscending }
+                }
+            } catch {
+                // Silent — LLDP search is best-effort.
+            }
+        }
     }
 
     private func addRecent(_ term: String) {
@@ -306,6 +385,45 @@ struct LocateView: View {
         }
         recents = updated
         recentsStore.save(updated)
+    }
+}
+
+// MARK: - LLDP hit row
+
+private struct LLDPHitRow: View {
+    let hit: LLDPSearchService.Hit
+    let hostname: String
+
+    var body: some View {
+        HStack(spacing: 12) {
+            Image(systemName: "antenna.radiowaves.left.and.right")
+                .font(.system(size: 16))
+                .foregroundStyle(Brand.steel)
+                .frame(width: 22)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(hit.sysName)
+                    .font(.system(size: 15, weight: .medium))
+                    .foregroundStyle(Brand.graphite)
+                    .lineLimit(1)
+                HStack(spacing: 6) {
+                    Text(hostname)
+                        .font(.system(size: 12, design: .monospaced))
+                        .foregroundStyle(Brand.slate)
+                    Text("·").foregroundStyle(Brand.mist).font(.caption)
+                    Text(hit.localInterface)
+                        .font(.system(size: 12, design: .monospaced))
+                        .foregroundStyle(Brand.slate)
+                }
+                if let portId = hit.remotePortId, !portId.isEmpty {
+                    Text("remote: \(portId)")
+                        .font(.system(size: 11, design: .monospaced))
+                        .foregroundStyle(Brand.slate)
+                        .lineLimit(1)
+                }
+            }
+            Spacer()
+        }
+        .padding(.vertical, 4)
     }
 }
 
