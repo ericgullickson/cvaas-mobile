@@ -57,14 +57,29 @@ targets:
           # (XcodeGen flattens equal filenames in resource copies → duplicate-output error).
           - "**/CLAUDE.md"
           - "**/README.md"
+    # Info.plist is declared explicitly (not auto-generated) so we can write the UILaunchScreen
+    # dict — the launch-screen color-asset binding does not have a working INFOPLIST_KEY_*
+    # equivalent in this Xcode toolchain.
+    info:
+      path: CloudVisionMobile/Info.plist
+      properties:
+        # Home-screen label. Trimmed from "CloudVision Mobile" → "CloudVision" — the icon
+        # already carries the visual brand; the label just needs to match how Arista refers
+        # to the product internally.
+        CFBundleDisplayName: CloudVision
+        UILaunchScreen:
+          UIColorName: LaunchBackground
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
     settings:
       base:
-        GENERATE_INFOPLIST_FILE: YES
-        INFOPLIST_KEY_CFBundleDisplayName: "CloudVision Mobile"
-        INFOPLIST_KEY_UILaunchScreen_Generation: YES
-        INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait"
+        GENERATE_INFOPLIST_FILE: NO
         TARGETED_DEVICE_FAMILY: "1"   # iPhone only
         PRODUCT_BUNDLE_IDENTIFIER: com.gullickson.CloudVisionMobile
+        # Apply the AccentColor asset (#16315A) as the global tint. Belt-and-suspenders with
+        # Appearance.apply() at app launch — covers anywhere UIKit reads the asset directly.
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         # DEVELOPMENT_TEAM: ""   # Eric: set to your Apple Developer Team ID for device builds
     dependencies:
       - package: GRPC

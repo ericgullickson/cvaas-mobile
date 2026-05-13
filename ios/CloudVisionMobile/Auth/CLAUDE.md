@@ -8,4 +8,5 @@ Service-account JWT auth (MVP path). Production end-state is OAuth/OIDC per PRD 
 |------|------|--------------|
 | `AuthStore.swift` | `@MainActor` `ObservableObject` exposing `tenantURL`, `jwt`, `isConfigured` | Wiring auth into views, changing what counts as "configured", adding auth-derived state |
 | `KeychainStore.swift` | Thin wrapper around `SecItem*` for read/write/delete of generic-password items | Changing storage backend, debugging Keychain access errors |
-| `SettingsView.swift` | Form for entering tenant URL + JWT, Save, Sign-out, debug Connector-test entry | Modifying settings UI, adding debug entries, changing URL/JWT validation |
+
+The settings UI itself lives under `Features/More/MoreView.swift`, which contains an embedded `TenantSettingsView` drill-down for tenant URL + JWT entry.
