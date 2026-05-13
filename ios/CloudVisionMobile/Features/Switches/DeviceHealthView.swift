@@ -18,6 +18,9 @@ struct DeviceHealthView: View {
     @State private var events: [Event] = []
     @State private var eventsLoadState: LoadState = .idle
     @State private var isFavorite: Bool
+    /// Last-reload time fetched via Connector (`Sysdb/cell/1/sys/reload/cause.timestamp`).
+    /// Authoritative source for uptime — `inventory.v1.Device.boot_time` is always epoch 0.
+    @State private var bootDateFromNetDB: Date?
 
     init(deviceId: String, prefill: Device?) {
         self.deviceId = deviceId
@@ -121,15 +124,25 @@ struct DeviceHealthView: View {
     }
 
     private var uptimeText: String {
-        guard let bootDate = currentDevice?.bootDate else { return "—" }
+        // Prefer the Connector-sourced boot date (real uptime). Fall back to inventory.v1's
+        // boot_time only if the Connector hasn't responded yet — and even then we filter
+        // epoch-zero defaults.
+        guard let bootDate = bootDateFromNetDB ?? validInventoryBootDate else { return "—" }
         let interval = Date().timeIntervalSince(bootDate)
-        guard interval > 0, interval < 10 * 365 * 24 * 3600 else { return "—" }
+        guard interval > 0 else { return "—" }
         let days = Int(interval / 86_400)
         let hours = Int((interval.truncatingRemainder(dividingBy: 86_400)) / 3600)
         let minutes = Int((interval.truncatingRemainder(dividingBy: 3600)) / 60)
         if days > 0 { return "\(days)d \(hours)h \(minutes)m" }
         if hours > 0 { return "\(hours)h \(minutes)m" }
         return "\(minutes)m"
+    }
+
+    private var validInventoryBootDate: Date? {
+        guard let bootDate = currentDevice?.bootDate else { return nil }
+        let interval = Date().timeIntervalSince(bootDate)
+        guard interval > 0, interval < 10 * 365 * 24 * 3600 else { return nil }
+        return bootDate
     }
 
     // MARK: - Quick actions
@@ -230,7 +243,24 @@ struct DeviceHealthView: View {
         let client = CVHTTPClient(tenantURL: url, jwt: auth.jwt)
         async let dev: () = loadDevice(client: client)
         async let evs: () = loadEvents(client: client)
-        _ = await (dev, evs)
+        async let uptime: () = loadUptime(tenantURL: url)
+        _ = await (dev, evs, uptime)
+    }
+
+    /// One-shot Connector query for the real boot time. Fires alongside the REST loads and
+    /// updates `bootDateFromNetDB` once received. Failures are silent — the Uptime row falls
+    /// back to `inventory.v1.boot_time` (which is typically epoch 0, so renders "—").
+    private func loadUptime(tenantURL: URL) async {
+        do {
+            let client = try ConnectorClient(tenantURL: tenantURL, jwt: auth.jwt)
+            defer { Task { await client.shutdown() } }
+            let svc = SystemUptimeService(client: client)
+            if let date = try await svc.bootDate(deviceSerial: deviceId) {
+                bootDateFromNetDB = date
+            }
+        } catch {
+            // Silent — uptime is non-critical; Connector failures shouldn't block the page.
+        }
     }
 
     private func loadDevice(client: CVHTTPClient) async {

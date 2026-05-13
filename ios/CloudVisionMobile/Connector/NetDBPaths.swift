@@ -63,6 +63,21 @@ enum NetDBPaths {
 
     // MARK: - Per-switch
 
+    /// Device's last-reload cause + timestamp. The `timestamp` field is the Unix epoch
+    /// (seconds, float) of the most recent reload — equivalent to system boot time.
+    ///
+    /// We use this instead of `inventory.v1.Device.boot_time` because the latter is
+    /// universally unpopulated (epoch 0 / 1970) on observed CVaaS tenants — the field
+    /// exists in the proto but isn't streamed reliably. Verified live 2026-05-13 against
+    /// `WTW25120383`: timestamp matched the web UI's "22 hours, 30 minutes" uptime.
+    ///
+    /// Also reports `description` (e.g. "Reload requested by the user.") which could be
+    /// surfaced for an in-app "last reload reason" line if we want it.
+    static let systemReloadCause: [NEATPathElement] = [
+        .string("Sysdb"), .string("cell"), .string("1"),
+        .string("sys"), .string("reload"), .string("cause"),
+    ]
+
     /// MAC table for the whole switch. PRD §5 F2 §v.
     /// One notification at the leaf; value is a list of FDB entries (vlan + mac + port).
     /// Verified reachable Sprint 2 §1.5 ("Smash/bridging/status/smashFdbStatus" present on the
