@@ -33,7 +33,11 @@ struct PortDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .task(id: port.interfaceName) { await loadEvents() }
         .refreshable { await loadEvents() }
-        .sheet(isPresented: $diagnosticsPresented) {
+        // Full-screen, not .sheet — iOS 26's card-style sheet exposes the underlying chrome
+        // above the rounded top, which created a visible navy "shelf" between the status bar
+        // and the diagnostic nav bar. Full-screen also forecloses accidental swipe-to-dismiss
+        // mid-write-op (which would orphan an in-flight ChangeControl).
+        .fullScreenCover(isPresented: $diagnosticsPresented) {
             DiagnosticsLauncherView(deviceId: deviceId, interfaceName: port.interfaceName)
                 .environmentObject(auth)
         }
