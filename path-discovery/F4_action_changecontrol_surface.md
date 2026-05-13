@@ -128,10 +128,78 @@ R11 status: **discovery completed favorably — both Actions are stock.** The R1
 
 ---
 
-## F4.1.c — NetDB path for Cable Test results (PENDING)
+## F4.1.c — NetDB path for Cable Test results (RESOLVED)
 
-Owed: enumerate the NetDB path under `["Sysdb", "interface", ...]` (or similar) that holds the per-pair Cable Test result after a run. Strategy mirrors Sprint 2 §1.5: walk the Sysdb tree on a device that has run the test at least once, looking for `cableDiag` / `cableTest` / `tdr` patterns.
+A controlled `interfaceCableTest` was submitted via ChangeControl against `WTW25120383 / Ethernet14` on 2026-05-13 (user-authorized). Two unexpected findings surfaced during execution; both are load-bearing for the Swift client design.
 
-Constraint: this test device's `interfaceCableTest` has never been run (CVaaS web modal shows "Not Started"). To enumerate the path with populated data, we either need to (a) run the test once on a less-critical port, or (b) probe the tree by name for empty paths.
+### Finding 1 — tenant is strict-mode (R12 confirmed)
 
-Next session.
+The first start attempt failed with HTTP 400 `Change Control cannot be started without approval`. The pilot tenant `cv-prod-us-4` is in strict ChangeControl mode. The full flow on this tenant is **create → read-back-to-get-version → approve → start → poll**, not the create/start/poll path the proto implies for permissive tenants.
+
+`ApproveConfig` requires a `version` timestamp (read from the ChangeControl back-fetch) as an optimistic-lock token. The `version` field maps to `change.time` on the read-side `ChangeControl` message.
+
+Swift client implication: `ChangeControlService` must support both flows. The MVP assumption that "submit then poll" is two API calls is wrong on this tenant — it's four. R12 mitigation needs to account for `Pending Approval` as a real state to surface.
+
+### Finding 2 — REST response shape is `{"value": {...}, "time": "..."}`, not `{"result": {"value": {...}}}`
+
+Both `Set` and `GetOne` responses on `ChangeControlConfigService` use a top-level `value` field, not `result.value`. The `Stream` endpoints (`/all`) wrap differently. This bit the first poll attempt (60s polling with status always "(unknown)" because the lookup path was wrong); fixed mid-probe.
+
+### NetDB result path
+
+Schema (verified live, populated data on Ethernet14):
+
+```
+Sysdb / hardware / phy / cabletest / status / slice / <slice> /
+        PhyIsland-<slice> / cableTestStatus / <interface>
+```
+
+Where:
+- `<slice>` = `FixedSystem` on fixed-config switches like the CCS-710P-16P. **NOT `"1"`** — different from the link-state path which uses numeric slice `"1"`. May differ on modular chassis.
+- `<interface>` = EOS interface name (e.g. `Ethernet14`).
+
+**Top-level fields at `cableTestStatus/<interface>`:**
+
+| Field | Type | Notes |
+|---|---|---|
+| `name` / `intfId` | str | Both equal the interface name. Redundant. |
+| `lengthUnit` | `{Name: "meters", Value: 1}` | Enum-style |
+| `lengthAccuracy` | int | `±N` meters for all pair lengths (was `10` on test run) |
+| `pairAStatus` / `pairBStatus` / `pairCStatus` / `pairDStatus` | Path pointers | Drill into one level deeper for per-pair data |
+| `cableStatus` | dict | `{cableState: {Name: "cableStateOk", Value: 1}, stateChanges, stateLastChange}` — whole-cable summary |
+| `diagnosticsStatus` | dict | `{changes, lastChange, cableTestRuns, diagnosticsState: {Name: "cableDiagnosticsRunStateCompleted", Value: 2}}` — run history meta |
+
+**Per-pair fields** (drill one level via `pairAStatus/.../pairAStatus`):
+
+| Field | Type | Notes |
+|---|---|---|
+| `pairLength` | int | Meters. Was `0` on our test (short patch cable on a working link). |
+| `pairLengthChanges` | int | Counter |
+| `pairLengthLastChange` | float | Epoch seconds |
+| `pairState` | `{Name: "pairStateOk", Value: 1}` | Other observed/expected values: `pairStateOpen`, `pairStateShort`, etc. |
+| `pairStateChanges` | int | |
+| `pairStateLastChange` | float | |
+
+**Speed display** ("5 Gbps" in the CVaaS web modal) does **not** come from the cabletest tree — it's the live `intfStatus` `speed` field, already in scope from F2.
+
+### Implications for F4 Swift client
+
+1. `NetDBPaths.swift` gets a new entry: `cableTestResult(slice: String, interfaceName: String)` returning the full path array.
+2. The slice token is platform-dependent; on fixed-config switches it's `FixedSystem`. Code must accept any slice token (don't hardcode `"1"` or `"FixedSystem"`).
+3. Per-pair status enum values worth knowing in advance for the Swift model: `pairStateOk`, `pairStateOpen`, `pairStateShort`, plus `pairStateUnknown` for ports that have never been tested.
+4. Whole-cable enum values: `cableStateOk`, plus likely `cableStateFault`, `cableStateUnknown`.
+5. Mid-run displays — before terminal — likely show `diagnosticsState: cableDiagnosticsRunStateInProgress`. UI should distinguish "in progress" from "completed" using this.
+
+### What about Interface Cycle results?
+
+Interface Cycle (admin shut/no-shut or PoE off/on) doesn't have a dedicated result tree. The user-visible "operational-state timeline" in the CVaaS web modal is constructed by reading the **existing** F2 link-state path (`Sysdb/interface/status/eth/phy/slice/1/intfStatus/<intf>`) and PoE path before/during/after the run and plotting transitions. No new NetDB path needed — F4 Swift client reuses what F2 already wires.
+
+### Discovery summary
+
+| | Result |
+|---|---|
+| Cable Test stock Action? | ✅ Yes (`interfaceCableTest`, BUILT_IN) |
+| Interface Cycle stock Action? | ✅ Yes (`interfaceCycle`, BUILT_IN) |
+| Tenant strict-mode? | ✅ Yes — approve step required |
+| NetDB result path for Cable Test? | ✅ `Sysdb/hardware/phy/cabletest/status/slice/<slice>/PhyIsland-<slice>/cableTestStatus/<intf>` |
+| NetDB result path for Interface Cycle? | N/A — reuse F2 link-state + PoE paths over the cycle window |
+| Cable-test silicon limitation? | The 710P returned all `0m ±10m` for pair lengths on a working short cable. Real fault detection requires a longer cable and/or faulty pairs to confirm meaningful output. Document the "results may show 0m on short healthy cables" caveat in the pilot user guide. |
