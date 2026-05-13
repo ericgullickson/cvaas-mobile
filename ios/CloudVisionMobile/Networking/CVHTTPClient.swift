@@ -26,6 +26,26 @@ struct CVHTTPClient {
         }
     }
 
+    // MARK: - POST with JSON body (used by F4 ChangeControlConfig + ApproveConfig Set)
+
+    /// POST a JSON-encodable body to `<tenant><path>`, decode the response as `T`.
+    func post<Body: Encodable, T: Decodable>(path: String, body: Body) async throws -> T {
+        let encoder = JSONEncoder()
+        let bodyData: Data
+        do {
+            bodyData = try encoder.encode(body)
+        } catch {
+            throw CVError.decoding(error)
+        }
+        let request = try makeRequest(method: "POST", path: path, query: [:], body: bodyData)
+        let data = try await execute(request)
+        do {
+            return try Self.decoder.decode(T.self, from: data)
+        } catch {
+            throw CVError.decoding(error)
+        }
+    }
+
     // MARK: - NDJSON GET (used by `/all` resource endpoints — inventory, events)
 
     /// GET an `/all` endpoint that streams newline-delimited JSON rows, each wrapped

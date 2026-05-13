@@ -10,6 +10,7 @@ struct PortDetailView: View {
     @EnvironmentObject private var auth: AuthStore
     @State private var events: [Event] = []
     @State private var eventLoadState: EventLoadState = .idle
+    @State private var diagnosticsPresented = false
 
     enum EventLoadState { case idle, loading, loaded; case failure(String) }
 
@@ -17,6 +18,7 @@ struct PortDetailView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
                 headerCard
+                diagnosticsEntry
                 linkSection
                 poeSection
                 lldpSection
@@ -31,6 +33,43 @@ struct PortDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .task(id: port.interfaceName) { await loadEvents() }
         .refreshable { await loadEvents() }
+        .sheet(isPresented: $diagnosticsPresented) {
+            DiagnosticsLauncherView(deviceId: deviceId, interfaceName: port.interfaceName)
+                .environmentObject(auth)
+        }
+    }
+
+    // MARK: - F4 entry
+
+    private var diagnosticsEntry: some View {
+        Button {
+            diagnosticsPresented = true
+        } label: {
+            HStack(spacing: 14) {
+                Image(systemName: "wrench.adjustable")
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundStyle(.white)
+                    .frame(width: 36, height: 36)
+                    .background(Brand.navy, in: RoundedRectangle(cornerRadius: 10))
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Interface Diagnostics")
+                        .font(.system(size: 15, weight: .semibold))
+                        .foregroundStyle(Brand.graphite)
+                    Text("Cable Test or Interface Cycle — disruptive")
+                        .font(.system(size: 12))
+                        .foregroundStyle(Brand.slate)
+                }
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundStyle(Brand.slate)
+            }
+            .padding(14)
+            .background(Color(.systemBackground), in: RoundedRectangle(cornerRadius: 12))
+            .padding(.horizontal, 16)
+            .padding(.top, 12)
+        }
+        .buttonStyle(.plain)
     }
 
     // MARK: - Header card

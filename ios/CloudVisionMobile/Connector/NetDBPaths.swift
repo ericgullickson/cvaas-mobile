@@ -72,6 +72,38 @@ enum NetDBPaths {
         .string("smashFdbStatus"),
     ]
 
+    // MARK: - F4 Interface Diagnostics
+
+    /// Per-port Cable Test result, written by the BUILT_IN `interfaceCableTest` Action.
+    /// Verified live 2026-05-13 on `WTW25120383`/`Ethernet14` (Sprint 3 F4.1.c).
+    ///
+    /// **Slice token caveat**: this path's slice token differs from the link-state path.
+    /// On fixed-config switches like the CCS-710P-16P it is `"FixedSystem"`, **not** the
+    /// numeric `"1"` used by `interfaceStatus`. On modular chassis the slice is likely the
+    /// linecard ID. Caller must pass the right token (default `"FixedSystem"` matches the
+    /// 710P pilot fixture).
+    ///
+    /// Path tail: `[..., "PhyIsland-<slice>", "cableTestStatus", "<interface>"]`.
+    /// Use `keys=[]` (empty); the children at this leaf are top-level fields, not nested
+    /// dictionaries.
+    static func cableTestResult(slice: String = "FixedSystem", interfaceName: String) -> [NEATPathElement] {
+        [
+            .string("Sysdb"), .string("hardware"), .string("phy"),
+            .string("cabletest"), .string("status"),
+            .string("slice"), .string(slice),
+            .string("PhyIsland-\(slice)"),
+            .string("cableTestStatus"),
+            .string(interfaceName),
+        ]
+    }
+
+    /// Children one level deeper than `cableTestResult` — `pairAStatus` / `pairBStatus` /
+    /// `pairCStatus` / `pairDStatus` records, each containing `pairLength`, `pairState`, etc.
+    /// Query with `keys=[]` and a trailing `.wildcard` to enumerate all four pair records.
+    static func cableTestPairResults(slice: String = "FixedSystem", interfaceName: String) -> [NEATPathElement] {
+        cableTestResult(slice: slice, interfaceName: interfaceName) + [.wildcard]
+    }
+
     // MARK: - F.7 smoke-test surface
 
     /// Every path the F.7 CI smoke test should sweep. Each entry pairs a label for failure
