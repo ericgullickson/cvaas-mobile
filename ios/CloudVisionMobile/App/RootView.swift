@@ -27,7 +27,7 @@ struct RootView: View {
         switch selected {
         case .devices: SwitchesView()
         case .alerts:  AlertsView()
-        case .tools:   LocateView()
+        case .search:   LocateView()
         case .more:    MoreView()
         }
     }
@@ -36,13 +36,13 @@ struct RootView: View {
 // MARK: - Tab model
 
 enum AppTab: Hashable, CaseIterable {
-    case devices, alerts, tools, more
+    case devices, alerts, search, more
 
     var label: String {
         switch self {
         case .devices: return "Devices"
         case .alerts:  return "Alerts"
-        case .tools:   return "Tools"
+        case .search:  return "Search"
         case .more:    return "More"
         }
     }
@@ -51,7 +51,7 @@ enum AppTab: Hashable, CaseIterable {
         switch self {
         case .devices: return "rectangle.stack.fill"
         case .alerts:  return "bell.fill"
-        case .tools:   return "wrench.and.screwdriver.fill"
+        case .search:  return "magnifyingglass"
         case .more:    return "ellipsis.circle.fill"
         }
     }
