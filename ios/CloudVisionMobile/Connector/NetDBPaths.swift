@@ -30,22 +30,29 @@ enum NetDBPaths {
         ]
     }
 
-    /// Per-port cumulative byte/packet counters. Verified 2026-05-14 against the live CV Web
-    /// UI's `cv.worker.js` — the worker registers this exact path as `INTERFACE_COUNTER_PATH`
-    /// and queries it on the `device` dataset. Notable: **no `slice` segment**, and the `phy`
-    /// segment sits between `eth` and `intfCounterDir`.
-    ///
-    /// The leaf value at `<intf>` is a struct of cumulative counters; the keys we care about
-    /// for the RX/TX rate chart are `inOctets` and `outOctets` (UInt64 byte totals). Rate
-    /// (bps) is derived client-side between consecutive time-bounded samples — Sysdb does not
-    /// expose rate, only the monotonic counter. (The analytics-pipeline pre-derived rates
-    /// live on the `analytics` dataset but aren't reachable via `RouterV1.Get` from the
-    /// mobile JWT scope — verified empty-result 2026-05-14.)
+    /// Per-port cumulative byte/packet counters (Sysdb). The leaf value is a struct of
+    /// cumulative counters (`inOctets`, `outOctets` as UInt64 byte totals). Rate must be
+    /// derived client-side. Prefer `analyticsRates` for the throughput chart — it returns
+    /// pre-derived bps with ~10s granularity.
     static func interfaceCounters(interfaceName: String) -> [NEATPathElement] {
         [
             .string("Sysdb"), .string("interface"), .string("counter"),
             .string("eth"), .string("phy"),
             .string("intfCounterDir"), .string(interfaceName),
+        ]
+    }
+
+    /// Per-port Turbine-derived throughput rates from the `analytics` dataset.
+    /// Dataset: `{type: "device", name: "analytics"}`.
+    /// Values are pre-derived float bps keyed by `inOctets` / `outOctets` — no client-side
+    /// delta computation needed. Time-bounded Get returns one notification per ~10s sample.
+    /// Verified via Python gRPC probe against cv-prod-us-4, 2026-05-14.
+    static func analyticsRates(deviceSerial: String, interfaceName: String) -> [NEATPathElement] {
+        [
+            .string("Devices"), .string(deviceSerial),
+            .string("versioned-data"), .string("interfaces"),
+            .string("data"), .string(interfaceName),
+            .string("rates"),
         ]
     }
 

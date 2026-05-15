@@ -14,3 +14,9 @@ __pycache__/
 
 # macOS
 .DS_Store
+
+# Internal Docs
+references/
+
+# public repos
+cloudvision-apis/

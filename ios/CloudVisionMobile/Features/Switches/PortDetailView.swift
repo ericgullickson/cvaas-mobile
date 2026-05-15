@@ -63,7 +63,7 @@ struct PortDetailView: View {
                 HStack {
                     Spacer()
                     ProgressView()
-                    Text("Collecting samples (~30 s)…").foregroundStyle(Brand.slate)
+                    Text("Loading throughput data...").foregroundStyle(Brand.slate)
                     Spacer()
                 }
                 .padding(.vertical, 28)
@@ -74,47 +74,19 @@ struct PortDetailView: View {
                         .padding(.vertical, 14)
                 }
             case .empty:
-                VStack(alignment: .leading, spacing: 10) {
-                    HStack(alignment: .top, spacing: 10) {
-                        Image(systemName: "chart.line.uptrend.xyaxis")
-                            .font(.system(size: 16))
-                            .foregroundStyle(Brand.slate)
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text("No counter samples in the last hour.")
-                                .font(.system(size: 13))
-                                .foregroundStyle(Brand.graphite)
-                            Text("Idle ports may not stream until traffic resumes.")
-                                .font(.system(size: 11))
-                                .foregroundStyle(Brand.slate)
-                        }
-                        Spacer()
-                    }
-                    if let d = counters?.diagnostic {
-                        VStack(alignment: .leading, spacing: 6) {
-                            Text("PROBES (latest-state)")
-                            ForEach(Array(d.probes.enumerated()), id: \.offset) { _, p in
-                                VStack(alignment: .leading, spacing: 1) {
-                                    Text(p.label).bold()
-                                    if let err = p.error {
-                                        Text("  err: \(err)").lineLimit(2)
-                                    } else {
-                                        Text("  notifs: \(p.count)")
-                                        if let k = p.firstKey { Text("  key: \(k)") }
-                                        if let v = p.firstValue { Text("  val: \(v)").lineLimit(2) }
-                                    }
-                                }
-                            }
-                            if let win = d.winningLabel {
-                                Text("winner: \(win) → notifs(time-bounded): \(d.historicalCount)")
-                                    .padding(.top, 4)
-                            } else if let err = d.historicalError {
-                                Text("historical err: \(err)").lineLimit(2)
-                            }
-                        }
-                        .font(.system(size: 10, design: .monospaced))
+                HStack(alignment: .top, spacing: 10) {
+                    Image(systemName: "chart.line.uptrend.xyaxis")
+                        .font(.system(size: 16))
                         .foregroundStyle(Brand.slate)
-                        .textSelection(.enabled)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("No throughput data in the last hour.")
+                            .font(.system(size: 13))
+                            .foregroundStyle(Brand.graphite)
+                        Text("Idle ports may not stream until traffic resumes.")
+                            .font(.system(size: 11))
+                            .foregroundStyle(Brand.slate)
                     }
+                    Spacer()
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical, 14)
