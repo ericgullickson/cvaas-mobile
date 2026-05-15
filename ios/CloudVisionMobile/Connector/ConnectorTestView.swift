@@ -13,10 +13,13 @@ struct ConnectorTestView: View {
     @State private var state: TestState = .idle
     @State private var query: TestQuery = .interfaceStatus
     @State private var deviceSerial: String = "WTW25120369"
+    @State private var interfaceName: String = "Ethernet14"
+    @State private var timeBounded: Bool = false
 
     enum TestQuery: String, CaseIterable, Identifiable {
         case datasetInfo = "cv  ·  DatasetInfo/Devices"
         case interfaceStatus = "device  ·  Sysdb/.../intfStatus/*"
+        case interfaceCounters = "device  ·  Sysdb/.../intfCounterDir/<intf>"
         var id: Self { self }
     }
 
@@ -45,11 +48,18 @@ struct ConnectorTestView: View {
                         Text(q.rawValue).font(.caption.monospaced()).tag(q)
                     }
                 }
-                if query == .interfaceStatus {
+                if query == .interfaceStatus || query == .interfaceCounters {
                     TextField("Device serial", text: $deviceSerial)
                         .font(.body.monospaced())
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled()
+                }
+                if query == .interfaceCounters {
+                    TextField("Interface", text: $interfaceName)
+                        .font(.body.monospaced())
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                    Toggle("Time-bounded (last 60 s)", isOn: $timeBounded)
                 }
             }
 
@@ -62,7 +72,7 @@ struct ConnectorTestView: View {
                         Text("Run RouterV1.Get")
                     }
                 }
-                .disabled(!auth.isConfigured || isRunning || (query == .interfaceStatus && deviceSerial.isEmpty))
+                .disabled(!auth.isConfigured || isRunning || needsDeviceSerialEmpty)
             }
 
             resultSection
@@ -110,6 +120,13 @@ struct ConnectorTestView: View {
         return false
     }
 
+    private var needsDeviceSerialEmpty: Bool {
+        switch query {
+        case .datasetInfo: return false
+        case .interfaceStatus, .interfaceCounters: return deviceSerial.isEmpty
+        }
+    }
+
     private func runTest() async {
         guard let url = URL(string: auth.tenantURL) else {
             state = .failure("Invalid tenant URL")
@@ -139,6 +156,20 @@ struct ConnectorTestView: View {
                         .string("eth"), .string("phy"), .string("slice"), .string("1"),
                         .string("intfStatus"), .wildcard
                     ]
+                )
+            case .interfaceCounters:
+                let (startNS, endNS): (UInt64?, UInt64?) = {
+                    guard timeBounded else { return (nil, nil) }
+                    let now = Date().timeIntervalSince1970
+                    return (UInt64((now - 60) * 1_000_000_000),
+                            UInt64(now * 1_000_000_000))
+                }()
+                notifications = try await client.get(
+                    datasetType: "device",
+                    datasetName: deviceSerial,
+                    path: NetDBPaths.interfaceCounters(interfaceName: interfaceName),
+                    startNS: startNS,
+                    endNS: endNS
                 )
             }
             await client.shutdown()

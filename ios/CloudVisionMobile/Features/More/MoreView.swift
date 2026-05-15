@@ -17,6 +17,9 @@ struct MoreView: View {
                         accountSection
                         preferencesSection
                         supportSection
+                        #if DEBUG
+                        debugSection
+                        #endif
                         signOutSection
                     } else {
                         notConfiguredSection
@@ -72,6 +75,19 @@ struct MoreView: View {
             MoreRow(label: "About", value: aboutVersion, chevron: true)
         }
     }
+
+    #if DEBUG
+    private var debugSection: some View {
+        section(title: "DEBUG") {
+            NavigationLink {
+                ConnectorTestView()
+            } label: {
+                MoreRow(label: "Connector test (D.4)", value: nil, chevron: true)
+            }
+            .buttonStyle(.plain)
+        }
+    }
+    #endif
 
     private var signOutSection: some View {
         VStack(spacing: 0) {

@@ -30,6 +30,25 @@ enum NetDBPaths {
         ]
     }
 
+    /// Per-port cumulative byte/packet counters. Verified 2026-05-14 against the live CV Web
+    /// UI's `cv.worker.js` — the worker registers this exact path as `INTERFACE_COUNTER_PATH`
+    /// and queries it on the `device` dataset. Notable: **no `slice` segment**, and the `phy`
+    /// segment sits between `eth` and `intfCounterDir`.
+    ///
+    /// The leaf value at `<intf>` is a struct of cumulative counters; the keys we care about
+    /// for the RX/TX rate chart are `inOctets` and `outOctets` (UInt64 byte totals). Rate
+    /// (bps) is derived client-side between consecutive time-bounded samples — Sysdb does not
+    /// expose rate, only the monotonic counter. (The analytics-pipeline pre-derived rates
+    /// live on the `analytics` dataset but aren't reachable via `RouterV1.Get` from the
+    /// mobile JWT scope — verified empty-result 2026-05-14.)
+    static func interfaceCounters(interfaceName: String) -> [NEATPathElement] {
+        [
+            .string("Sysdb"), .string("interface"), .string("counter"),
+            .string("eth"), .string("phy"),
+            .string("intfCounterDir"), .string(interfaceName),
+        ]
+    }
+
     /// Per-port PoE state. Verified Sprint 2 F.1.c against a 710P (Ethernet14 live PoE fixture).
     /// Returns one notification per port; tail is the interface name. Per-port keys include:
     ///   - `portStatus` (nested map: `pdClass.Name`, `poePortState.Name`, `grantedPower.value`, ...)

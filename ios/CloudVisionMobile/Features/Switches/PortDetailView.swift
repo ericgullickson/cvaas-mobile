@@ -10,14 +10,18 @@ struct PortDetailView: View {
     @EnvironmentObject private var auth: AuthStore
     @State private var events: [Event] = []
     @State private var eventLoadState: EventLoadState = .idle
+    @State private var counters: CounterSeries?
+    @State private var countersLoadState: CountersLoadState = .idle
     @State private var diagnosticsPresented = false
 
     enum EventLoadState { case idle, loading, loaded; case failure(String) }
+    enum CountersLoadState { case idle, loading, loaded, empty; case failure(String) }
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
                 headerCard
+                throughputSection
                 diagnosticsEntry
                 linkSection
                 poeSection
@@ -31,8 +35,14 @@ struct PortDetailView: View {
         .background(Color(.systemGroupedBackground))
         .navigationTitle(port.interfaceName)
         .navigationBarTitleDisplayMode(.inline)
-        .task(id: port.interfaceName) { await loadEvents() }
-        .refreshable { await loadEvents() }
+        .task(id: port.interfaceName) {
+            await loadEvents()
+            await loadCounters()
+        }
+        .refreshable {
+            await loadEvents()
+            await loadCounters()
+        }
         // Full-screen, not .sheet — iOS 26's card-style sheet exposes the underlying chrome
         // above the rounded top, which created a visible navy "shelf" between the status bar
         // and the diagnostic nav bar. Full-screen also forecloses accidental swipe-to-dismiss
@@ -40,6 +50,86 @@ struct PortDetailView: View {
         .fullScreenCover(isPresented: $diagnosticsPresented) {
             DiagnosticsLauncherView(deviceId: deviceId, interfaceName: port.interfaceName)
                 .environmentObject(auth)
+        }
+    }
+
+    // MARK: - Throughput
+
+    @ViewBuilder
+    private var throughputSection: some View {
+        section(title: "THROUGHPUT (1H)") {
+            switch countersLoadState {
+            case .idle, .loading:
+                HStack {
+                    Spacer()
+                    ProgressView()
+                    Text("Collecting samples (~30 s)…").foregroundStyle(Brand.slate)
+                    Spacer()
+                }
+                .padding(.vertical, 28)
+            case .loaded:
+                if let series = counters {
+                    InterfaceCountersChart(series: series)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 14)
+                }
+            case .empty:
+                VStack(alignment: .leading, spacing: 10) {
+                    HStack(alignment: .top, spacing: 10) {
+                        Image(systemName: "chart.line.uptrend.xyaxis")
+                            .font(.system(size: 16))
+                            .foregroundStyle(Brand.slate)
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("No counter samples in the last hour.")
+                                .font(.system(size: 13))
+                                .foregroundStyle(Brand.graphite)
+                            Text("Idle ports may not stream until traffic resumes.")
+                                .font(.system(size: 11))
+                                .foregroundStyle(Brand.slate)
+                        }
+                        Spacer()
+                    }
+                    if let d = counters?.diagnostic {
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text("PROBES (latest-state)")
+                            ForEach(Array(d.probes.enumerated()), id: \.offset) { _, p in
+                                VStack(alignment: .leading, spacing: 1) {
+                                    Text(p.label).bold()
+                                    if let err = p.error {
+                                        Text("  err: \(err)").lineLimit(2)
+                                    } else {
+                                        Text("  notifs: \(p.count)")
+                                        if let k = p.firstKey { Text("  key: \(k)") }
+                                        if let v = p.firstValue { Text("  val: \(v)").lineLimit(2) }
+                                    }
+                                }
+                            }
+                            if let win = d.winningLabel {
+                                Text("winner: \(win) → notifs(time-bounded): \(d.historicalCount)")
+                                    .padding(.top, 4)
+                            } else if let err = d.historicalError {
+                                Text("historical err: \(err)").lineLimit(2)
+                            }
+                        }
+                        .font(.system(size: 10, design: .monospaced))
+                        .foregroundStyle(Brand.slate)
+                        .textSelection(.enabled)
+                    }
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 14)
+            case .failure(let msg):
+                HStack(spacing: 8) {
+                    Image(systemName: "exclamationmark.triangle")
+                        .foregroundStyle(.orange)
+                    Text(msg)
+                        .font(.caption)
+                        .foregroundStyle(Brand.graphite)
+                    Spacer()
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 14)
+            }
         }
     }
 
@@ -332,6 +422,33 @@ struct PortDetailView: View {
             eventLoadState = .loaded
         } catch {
             eventLoadState = .failure("Couldn't load events: \(error.localizedDescription)")
+        }
+    }
+
+    private func loadCounters() async {
+        guard let url = URL(string: auth.tenantURL) else {
+            countersLoadState = .failure("Invalid tenant URL")
+            return
+        }
+        countersLoadState = .loading
+        let connector: ConnectorClient
+        do {
+            connector = try ConnectorClient(tenantURL: url, jwt: auth.jwt)
+        } catch {
+            countersLoadState = .failure("Connector unavailable: \(String(describing: error))")
+            return
+        }
+        defer { Task { await connector.shutdown() } }
+        let svc = InterfaceCountersService(client: connector)
+        let series = await (try? svc.fetchHistory(
+            deviceSerial: deviceId,
+            interfaceName: port.interfaceName
+        ))
+        if let series {
+            counters = series
+            countersLoadState = series.isEmpty ? .empty : .loaded
+        } else {
+            countersLoadState = .failure("Counter fetch raised an unexpected exception.")
         }
     }
 }
